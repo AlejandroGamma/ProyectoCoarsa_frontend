@@ -1,0 +1,38 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row mt10">
+      <div class="col-md-6 offset-md-3">
+        <mat-card>
+          <mat-card-content>
+          <div class="container  text-center">
+          <img src="/assets/coarsa.png"  width="300" height="200">
+          </div>
+
+          <h1 class="text-center"> Inicio de Sesión</h1>
+          <form (ngSubmit)="formSubmit()" >
+            <mat-form-field class="full-width"  appearance = "fill">
+              <mat-icon matSuffix>person</mat-icon>
+
+              <input [(ngModel)]="loginData.username"  required name = "username" matInput placeholder="Usuario">
+
+
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="full-width"  appearance = "fill">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+
+              <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="loginData.password" required type="password" name = "password" matInput placeholder="Contraseña">
+
+            </mat-form-field>
+            <br><br>
+            <div class="container text-center" >
+              <button type = "submit" mat-raised-button color="primary">Iniciar sesión</button>
+            </div>
+          </form>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+</div>

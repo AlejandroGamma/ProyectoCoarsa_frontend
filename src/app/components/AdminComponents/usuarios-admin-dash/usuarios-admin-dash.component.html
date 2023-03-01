@@ -1,0 +1,46 @@
+
+<br><br>
+
+
+<div class="mat-elevation-z8">
+  <h1>Usuarios Registrados</h1>
+  <br> <br>
+  <button mat-raised-button color="accent"   >Agregar un Nuevo Usuario</button>
+  <br> <br>
+  <mat-card>
+
+    <table mat-table  [dataSource]="tableDataSource1">
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Username">
+        <th mat-header-cell *matHeaderCellDef>  Username</th>
+        <td mat-cell *matCellDef="let user"> {{user.username}}   </td>
+      </ng-container>
+      <ng-container matColumnDef="Nombre">
+        <th mat-header-cell *matHeaderCellDef>  Nombre </th>
+        <td mat-cell *matCellDef="let user"> {{user.firstName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Apellido">
+        <th mat-header-cell *matHeaderCellDef  > Apellido </th>
+        <td mat-cell  *matCellDef="let user"> {{user.lastName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Estado">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let user">  {{user.estado ? "Habilitado" : " Deshabilitado"}} </td>
+
+      </ng-container>
+      <ng-container matColumnDef="Acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let user">  <button mat-raised-button color="primary"  (click)="actualizarUsuario(user.id)"  >Editar</button>  &nbsp;   <button mat-raised-button color="accent" matTooltip="Deshabilitar usuario" *ngIf="user.estado === true " (click)="onClickDesactivarUsuario(user.username)" [disabled]="user.authorities[0].authority === 'ADMIN'" >Deshabilitar</button> <button mat-raised-button color="accent" matTooltip="Habilitar usuario" *ngIf="user.estado === false " (click)="onClickActivarUsuario(user.username)"  >Habilitar</button> </td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let emprow; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </mat-card>
+</div>

@@ -1,0 +1,24 @@
+
+<mat-toolbar color="primary">
+  <a
+    [routerLink]="'/'"
+    mat-icon-button class="example-icon" arial-label="Example icon-button with menu icon">
+    <img src="assets/coarsaLogo.png"  width="60" height="60">
+  </a>
+  <span>Quiosco Coarsa</span>
+  <span class="example-spacer"></span>
+
+
+  <button *ngIf ="!loginService.isLoggedIn()" mat-button [routerLink]="'/login'" > <span>Iniciar sesion</span>
+  </button>
+  <button *ngIf ="!loginService.isLoggedIn()" mat-button [routerLink]="'/signup'" > <span>Registrarse</span>
+  </button>
+  <button  *ngIf = "isLoggedIn && user" mat-button   >  <span  (click)="onClickPerfilButton()" > {{this.user.username}} </span>
+    <mat-icon>account_box</mat-icon>
+  </button>
+  <button *ngIf ="loginService.isLoggedIn()" (click) = "logout()" mat-button >  <span>Cerrar Sesion</span>
+  </button>
+
+
+
+</mat-toolbar>

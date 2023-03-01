@@ -1,0 +1,26 @@
+<mat-card>
+  <mat-action-list animationDuration="0ms">
+    <div mat-subheader>Menu</div>
+    <button mat-list-item routerLink="/user-dashboard/inicio" routerLinkActive="activebutton">
+      <mat-icon mat-list-icon>home</mat-icon> Inicio
+
+    </button>
+    <mat-tab label="First">Content 1</mat-tab>
+    <mat-divider></mat-divider>
+    <button mat-list-item routerLink="/user-dashboard/perfil" routerLinkActive="activebutton">
+      <mat-icon mat-list-icon> account_circle</mat-icon> Perfil
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-list-item [routerLink]="['/user-dashboard/vacaciones']" routerLinkActive="activebutton">
+      <mat-icon mat-list-icon> filter drama icon</mat-icon> Vacaciones
+    </button>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <button mat-list-item (click) = "logout()" [routerLink]="['/login']" routerLinkActive="activebutton">
+      <mat-icon mat-list-icon> logout</mat-icon> Cerrar Sesión
+    </button>
+    <mat-divider></mat-divider>
+  </mat-action-list>
+</mat-card>
+
+

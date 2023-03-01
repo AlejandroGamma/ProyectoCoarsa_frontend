@@ -1,0 +1,33 @@
+
+
+<mat-card>
+  <mat-action-list animationDuration="2000ms">
+    <div mat-subheader>Menu</div>
+    <button mat-list-item [routerLink]="['/admin/inicio-admin']" routerLinkActive="activebutton" routerLinkActive="active">
+      <mat-icon mat-list-icon>home</mat-icon> Inicio
+
+    </button>
+    <mat-tab label="First">Content 1</mat-tab>
+    <mat-divider></mat-divider>
+    <button mat-list-item [routerLink]="['/admin/perfil']" routerLinkActive="activebutton">
+      <mat-icon mat-list-icon> account_circle</mat-icon> Perfil
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-list-item routerLink="/admin/vacaciones" routerLinkActive="activebutton">
+      <mat-icon mat-list-icon> filter drama icon</mat-icon> Vacaciones
+    </button>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <button mat-list-item routerLink="/admin/usuarios" routerLinkActive="activebutton">
+      <mat-icon>supervisor_account</mat-icon> Usuarios
+    </button>
+    <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <button mat-list-item routerLink="/admin/configuraciones" routerLinkActive="activebutton">
+      <mat-icon>settings</mat-icon> Configuraciones
+    </button>
+    <mat-divider></mat-divider>
+  </mat-action-list>
+
+</mat-card>
+

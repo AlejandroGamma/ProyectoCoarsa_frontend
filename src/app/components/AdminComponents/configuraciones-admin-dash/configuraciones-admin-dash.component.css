@@ -1,0 +1,12 @@
+.example-card {
+  max-width: 800px;
+}
+table {
+  width: 20%;
+}
+.correos-card {
+  max-width: 800px;
+}
+.example-button-row .mat-mdc-button-base {
+  margin: 5px 5px 5px 0;
+}
