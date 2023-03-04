@@ -2,11 +2,11 @@ node_modules
 .git
 .gitignore
 ._.DS_Store
-dist
 
+angular-app/node_modules
 
 .firebase
-
+dist
 .editorconfig
 
 /node_modules

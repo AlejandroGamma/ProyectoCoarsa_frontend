@@ -1,0 +1,83 @@
+
+<h1>Actualizar datos del usuario </h1>
+<mat-card class="container-card">
+
+<mat-card class="example-card">
+  <mat-card-header>
+
+
+
+    <mat-card-title>Actualizar datos del usuario: {{user.firstName}}</mat-card-title>
+    <br><br><br><br>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="example-container">
+    <form (ngSubmit)="formSubmit()"  >
+
+      <mat-form-field  appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput  id="nombre" name="nombre" [(ngModel)] = "user.firstName">
+
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input [(ngModel)]= "user.lastName" name = "apellido" matInput  >
+
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Correo</mat-label>
+        <input  [(ngModel)]= "user.email"  name = "email" type="email" matInput  >
+
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input  [(ngModel)]= "user.username"  name = "username" type="username" matInput  >
+
+      </mat-form-field>
+
+<div class="button-actualizar">
+  <button mat-raised-button type="submit" color="primary">Actualizar</button>
+  <button mat-raised-button [routerLink]="'/admin/usuarios'">Cancelar</button>
+</div>
+
+    </form>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+  <br>
+  <mat-card class="example-card">
+
+    <mat-card-title>Cambiar contraseña del usuario: {{user.firstName}}</mat-card-title>
+    <br><br>
+    <div class="example-container">
+      <mat-card-content>
+      <form (ngSubmit)="formSubmitPassword()"  >
+
+        <mat-form-field  appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput  id="contrasenna" name="contrasenna" type="password" [(ngModel)] = "ChangePassword.newPassword">
+
+        </mat-form-field>
+
+        <mat-form-field  appearance="fill">
+          <mat-label>Confirmar Contraseña</mat-label>
+          <input matInput  id="confcontrasenna" name="confcontrasenna" type="password" [(ngModel)] = "ChangePassword.confirmPassword">
+
+        </mat-form-field>
+
+
+
+        <div class="button-actualizar">
+          <button mat-raised-button type="submit" color="primary">Actualizar</button>
+          <button mat-raised-button type="reset" >Limpiar</button>
+        </div>
+
+      </form>
+      </mat-card-content>
+    </div>
+
+  </mat-card>
+</mat-card>
