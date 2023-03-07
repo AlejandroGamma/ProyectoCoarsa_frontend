@@ -28,8 +28,14 @@
 
 .mat-table-container{
   padding: 3%;
+
 }
 
 .mat-table-wrapper-tables{
   padding: 1%;
+
+}
+
+.mat-elevation-z8{
+  max-width: 90%;
 }

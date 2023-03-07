@@ -1,13 +1,14 @@
 
-<br><br>
-
-
-<div class="mat-elevation-z8">
+<mat-card class="mat-table-container">
   <h1>Usuarios Registrados</h1>
   <br> <br>
-  <button mat-raised-button color="accent"   >Agregar un Nuevo Usuario</button>
+  <div>
+    <button mat-raised-button color="accent"   >Agregar un Nuevo Usuario</button>
+  </div>
+
   <br> <br>
-  <mat-card>
+  <div class="mat-elevation-z8">
+  <mat-card class="mat-table-wrapper-tables">
 
     <table mat-table  [dataSource]="tableDataSource1">
       <ng-container matColumnDef="Id">
@@ -44,3 +45,4 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </mat-card>
 </div>
+</mat-card>
