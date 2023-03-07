@@ -50,6 +50,7 @@ import { EditarPerfilAdminComponent } from './components/AdminComponents/editar-
 import { CrearNuevoUsuarioAdminComponent } from './components/AdminComponents/crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component';
 import { InicioAdminComponent } from './components/AdminComponents/inicio-admin/inicio-admin.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

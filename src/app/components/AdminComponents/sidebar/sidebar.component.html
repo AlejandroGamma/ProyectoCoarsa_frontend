@@ -27,6 +27,12 @@
       <mat-icon>settings</mat-icon> Configuraciones
     </button>
     <mat-divider></mat-divider>
+    <br>
+    <mat-divider></mat-divider>
+    <button mat-list-item (click) = "logout()" [routerLink]="['/login']" routerLinkActive="activebutton">
+      <mat-icon mat-list-icon> logout</mat-icon> Cerrar Sesión
+    </button>
+    <mat-divider></mat-divider>
   </mat-action-list>
 
 </mat-card>
