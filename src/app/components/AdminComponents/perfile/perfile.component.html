@@ -1,21 +1,35 @@
-<h1>Detalles del perfil</h1>
 
 
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Perfil Personal</mat-card-title>
-  </mat-card-header>
 
-  <br><br><br>
-  <mat-card-content>
-    <p><Strong>Nombre: </Strong>{{user.firstName}} {{user.apellido}}</p>
-    <p><Strong>Apellido: </Strong>{{user.lastName}}</p>
-    <p><Strong>Nombre de usuario: </Strong>{{user.username}}</p>
-    <p><Strong>telefono: </Strong>{{user.telefono}}</p>
-    <p><Strong>email: </Strong>{{user.email}}</p>
-    <p><Strong>Rol: </Strong>{{user.authorities[0].authority}}</p>
-    <p><Strong>Rol: </Strong>{{user.enable ? "No activo" : "Activo"}}</p>
-    </mat-card-content>
+<mat-card class="mat-table-container">
+  <h1>Detalles del perfil</h1>
+
+
+  <div class="div-wrapper">
+    <mat-card class="mat-table-wrapper-tables">
+      <mat-card-header>
+        <mat-card-title>Perfil Personal</mat-card-title>
+        <mat-card-subtitle>Datos personales del perfil</mat-card-subtitle>
+      </mat-card-header>
+
+      <br><br>
+      <mat-card-content>
+        <p><Strong>Nombre: </Strong>{{user.firstName}} {{user.apellido}}</p>
+        <p><Strong>Apellido: </Strong>{{user.lastName}}</p>
+        <p><Strong>Nombre de usuario: </Strong>{{user.username}}</p>
+        <p><Strong>telefono: </Strong>{{user.telefono}}</p>
+        <p><Strong>email: </Strong>{{user.email}}</p>
+        <p><Strong>Rol: </Strong>{{user.authorities[0].authority}}</p>
+        <p><Strong>Rol: </Strong>{{user.enable ? "No activo" : "Activo"}}</p>
+      </mat-card-content>
+
+    </mat-card>
+
+    <mat-card class="mat-table-wrapper-tables">
+      xs
+    </mat-card>
+  </div>
+
 </mat-card>
 
 

@@ -5,3 +5,10 @@
 .container{
    offset: 30px;
 }
+.form-container{
+  margin: 8%;
+}
+.button-signin{
+  padding-left: 30%;
+  padding-right:30%;
+}

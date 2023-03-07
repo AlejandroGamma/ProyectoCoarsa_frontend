@@ -47,8 +47,9 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { EditarPerfilAdminComponent } from './components/AdminComponents/editar-perfil-admin/editar-perfil-admin.component';
-import { CrearNuevoUsuarioAdminComponent } from './crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component';
-import { InicioAdminComponent } from './inicio-admin/inicio-admin.component';
+import { CrearNuevoUsuarioAdminComponent } from './components/AdminComponents/crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component';
+import { InicioAdminComponent } from './components/AdminComponents/inicio-admin/inicio-admin.component';
+
 @NgModule({
   declarations: [
     AppComponent,

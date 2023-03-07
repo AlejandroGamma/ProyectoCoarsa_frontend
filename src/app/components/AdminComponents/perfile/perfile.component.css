@@ -14,3 +14,23 @@
   padding: 15px 10px;
   border: 0.5px solid gainsboro;
 }
+.mat-icon-button.mat-success {
+  color:#155724;
+}
+
+.mat-table-container{
+  padding: 3%;
+
+}
+
+.mat-table-wrapper-tables{
+  padding: 1%;
+  max-width: 600px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.div-wrapper{
+  display: flex;
+
+}

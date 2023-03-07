@@ -16,8 +16,8 @@ import {VacacionesAdminDashComponent} from "./components/AdminComponents/vacacio
 import {UsuariosAdminDashComponent} from "./components/AdminComponents/usuarios-admin-dash/usuarios-admin-dash.component";
 import {ConfiguracionesAdminDashComponent} from "./components/AdminComponents/configuraciones-admin-dash/configuraciones-admin-dash.component";
 import {EditarPerfilAdminComponent} from "./components/AdminComponents/editar-perfil-admin/editar-perfil-admin.component";
-import {CrearNuevoUsuarioAdminComponent} from "./crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component";
-import {InicioAdminComponent} from "./inicio-admin/inicio-admin.component";
+import {CrearNuevoUsuarioAdminComponent} from "./components/AdminComponents/crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component";
+import {InicioAdminComponent} from "./components/AdminComponents/inicio-admin/inicio-admin.component";
 
 const routes: Routes = [
 

@@ -11,6 +11,7 @@
         </div>
         <h1 class="text-center"> Registrarse</h1>
 
+            <div class="form-container">
           <form (ngSubmit) = "formSubmit()" [formGroup]="userReg">
             <mat-form-field class="full-width"  appearance = "outline">
               <mat-label>Nombre de usuario</mat-label>
@@ -24,7 +25,7 @@
               <input    formControlName="password" type="password" name = "password" type = "password" matInput placeholder="Digite su contraseña">
             </mat-form-field>
             <mat-form-field class="full-width"  appearance = "outline">
-              <mat-label>Comfirmar  contraseña</mat-label>
+              <mat-label>Confirmar  contraseña</mat-label>
               <input  required formControlName="confirmPassword" type="password" name = "password" type = "password" matInput >
             </mat-form-field>
             <mat-form-field class="full-width"  appearance = "outline">
@@ -48,10 +49,11 @@
 
             </mat-form-field>
             <div class="container text-center" >
-              <button mat-raised-button type="submit" [disabled]="userReg.invalid" color="primary">Registrar</button>
+              <button mat-raised-button type="submit" class="button-registrar" [disabled]="userReg.invalid" color="primary">Registrar</button>
 
             </div>
           </form>
+            </div>
             </mat-card-content>
         </mat-card>
         <br><br><br>
