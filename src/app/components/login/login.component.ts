@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import { Router } from '@angular/router';
 import {LoginService} from "../../services/login.service";
+import {SpinnerService} from "../../services/spinner.service";
 
 @Component({
   selector: 'app-login',
@@ -18,10 +19,11 @@ loginData = {
   hide = true;
 
 
-constructor(private snack:MatSnackBar, private   loginService:LoginService,private router:Router) {
+constructor(private snack:MatSnackBar, private   loginService:LoginService,private router:Router, private spinerService:SpinnerService) {
 }
 
   ngOnInit(): void {
+
   }
 
 

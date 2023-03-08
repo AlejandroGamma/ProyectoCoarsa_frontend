@@ -8,18 +8,20 @@ import {
 } from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {LoginService} from "./login.service";
-import {Observable, tap} from "rxjs";
+import {finalize, Observable, tap} from "rxjs";
 import {Router} from "@angular/router";
+import {SpinnerService} from "./spinner.service";
 
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
 
-  constructor(private loginService:LoginService, private router:Router) {
+  constructor(private loginService:LoginService, private router:Router, private spinnerService:SpinnerService) {
 
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    this.spinnerService.llamarSpinner();
     let authReq = req;
     const token = this.loginService.getToken();
     if (token != null){
@@ -27,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor{
         setHeaders : {Authorization: `Bearer ${token}`}
       })
     }
-    return next.handle(authReq).pipe( tap(()=>{},
+    return next.handle(authReq).pipe( finalize(() => this.spinnerService.esconderSpinner()), tap(()=>{},
       (error:any) =>{
       if (error instanceof HttpErrorResponse){
         if (error.status !== 401){

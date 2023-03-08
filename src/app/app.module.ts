@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -49,7 +49,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { EditarPerfilAdminComponent } from './components/AdminComponents/editar-perfil-admin/editar-perfil-admin.component';
 import { CrearNuevoUsuarioAdminComponent } from './components/AdminComponents/crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component';
 import { InicioAdminComponent } from './components/AdminComponents/inicio-admin/inicio-admin.component';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -105,11 +105,14 @@ import { InicioAdminComponent } from './components/AdminComponents/inicio-admin/
     MatMenuModule,
     MatChipsModule,
     MatExpansionModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxSpinnerModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
 
 
   ],
   providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
