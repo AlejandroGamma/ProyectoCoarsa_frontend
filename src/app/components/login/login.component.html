@@ -14,7 +14,7 @@
 
           <form (ngSubmit)="formSubmit()" >
             <mat-form-field class="full-width"  appearance = "fill">
-              <mat-icon matSuffix>person</mat-icon>
+              <mat-icon matPrefix>person</mat-icon>
 
               <input [(ngModel)]="loginData.username"  required name = "username" matInput placeholder="Usuario">
 
@@ -22,7 +22,7 @@
             </mat-form-field>
             <br><br>
             <mat-form-field class="full-width"  appearance = "fill">
-              <mat-icon matSuffix>vpn_key</mat-icon>
+              <mat-icon matPrefix>lock</mat-icon>
 
               <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="loginData.password" required type="password" name = "password" matInput placeholder="Contraseña">
 

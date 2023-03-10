@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import baserURL from "./helper";
 import {Subject} from "rxjs";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class LoginService {
 
 
 
-  constructor(private  http:HttpClient) { }
+  constructor(private  http:HttpClient, private snack:MatSnackBar) { }
 
   public loginStatusSubject = new Subject<boolean>();
 
@@ -37,6 +38,10 @@ export class LoginService {
   public logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.snack.open('Se ha cerrado la sesión.','Aceptar', {
+      duration: 4000,
+
+    })
     return true;
   }
 

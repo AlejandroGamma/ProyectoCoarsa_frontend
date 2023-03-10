@@ -1,49 +1,31 @@
-<mat-card style="margin-left: 10px; padding: 10px;" >
+<mat-card class="mat-table-container">
   <h1>Detalles del perfil</h1>
-  <mat-card-content style="     padding: 10px;">
-    <div class = "bootstrap-wrapper">
-      <div class = "container">
-        <div class = "text-center">
-          <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-            alt=""
-            class = "profile-image">
 
-          <h1 class="mt20">{{user.nombre}} {{user.apellido}}</h1>
-        </div>
-        <div class = "row">
-          <div class = "col-md-10 offset-md-1">
-            <table class = "table text-center">
-              <tr>
-                <td><strong>Nombre de usuario</strong> </td>
-                <td>{{user.username}}</td>
-              </tr>
-              <tr>
-                <td><strong>ID</strong></td>
-                <td>{{user.id}}</td>
-              </tr>
-              <tr>
-                <td><strong>Teléfono</strong> </td>
-                <td>{{user.telefono}}</td>
-              </tr>
-              <tr>
-                <td><strong>Rol</strong> </td>
-                <td>{{user.authorities[0].authority}}</td>
-              </tr>
-              <tr>
-                <td><strong>Estado</strong> </td>
-                <td>{{user.estado ? "No activo" : "Activo"}}</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
+
+  <div class="div-wrapper">
+    <mat-card class="mat-table-wrapper-tables">
+      <mat-card-header>
+        <mat-card-title>Perfil Personal</mat-card-title>
+        <mat-card-subtitle>Datos personales </mat-card-subtitle>
+      </mat-card-header>
+
       <br><br>
-      <mat-card-actions class = "container col-1">
-        <button mat-raised-button color = "primary">Actualizar</button>
+      <mat-card-content>
+        <p><Strong>Nombre: </Strong>{{user.firstName}} {{user.apellido}}</p>
+        <p><Strong>Apellido: </Strong>{{user.lastName}}</p>
+        <p><Strong>Nombre de usuario: </Strong>{{user.username}}</p>
+        <p><Strong>telefono: </Strong>{{user.telefono}}</p>
+        <p><Strong>email: </Strong>{{user.email}}</p>
+        <p><Strong>Rol: </Strong>{{user.authorities[0].authority}}</p>
+        <p><Strong>Rol: </Strong>{{user.enable ? "No activo" : "Activo"}}</p>
+      </mat-card-content>
 
-      </mat-card-actions>
-    </div>
-    </mat-card-content>
-  </mat-card>
+    </mat-card>
+
+    <mat-card class="mat-table-wrapper-tables">
+
+    </mat-card>
+  </div>
+
+</mat-card>
 

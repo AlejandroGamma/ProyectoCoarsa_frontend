@@ -11,12 +11,13 @@ import {LoginService} from "./login.service";
 import {finalize, Observable, tap} from "rxjs";
 import {Router} from "@angular/router";
 import {SpinnerService} from "./spinner.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
 
-  constructor(private loginService:LoginService, private router:Router, private spinnerService:SpinnerService) {
+  constructor(private loginService:LoginService, private router:Router, private spinnerService:SpinnerService, private snack:MatSnackBar) {
 
   }
 
@@ -37,6 +38,10 @@ export class AuthInterceptor implements HttpInterceptor{
           return
         }
         this.router.navigate(['login'])
+        this.snack.open('La sesión ha expirado, vuelva a iniciar sesión.','Aceptar', {
+          duration: 6000,
+          panelClass: ['error-snackbar'],
+        })
       }
       }
       ));

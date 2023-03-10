@@ -52,13 +52,13 @@ formSubmit(){
           if(this.loginService.getUserRole() == "ADMIN"){
             //dashboard admin
 
-            this.router.navigate(['/admin'])
+            this.router.navigate(['/admin/inicio-admin'])
             this.loginService.loginStatusSubject.next(true);
 
           }
           else if (this.loginService.getUserRole() == 'NORMAL'){
             //user dashboard
-            this.router.navigate(['/user-dashboard'])
+            this.router.navigate(['/user-dashboard/inicio'])
 
             this.loginService.loginStatusSubject.next(true);
 
