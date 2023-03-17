@@ -1,7 +1,11 @@
 .form-container{
   margin: 8%;
 }
+.mat-mdc-form-field{
+  padding: 1%;
+}
 .button-registrar{
+   margin:1% ;
   padding-left: 30%;
   padding-right:30%;
 }

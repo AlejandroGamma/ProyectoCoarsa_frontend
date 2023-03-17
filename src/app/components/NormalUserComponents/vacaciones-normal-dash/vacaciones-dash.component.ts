@@ -60,6 +60,10 @@ export class VacacionesDashComponent implements  OnInit{
   //esto funciona para poder devolverse al crear la solicitud de vacaciones
   isEditable = true;
 
+  //Fecha de hoy, este metodo se llama en el html y se pone como minimo para blquear los dias anteriores a hoy
+  //ademas del filtro ya agregado llamado
+  todayDate:Date = new Date();
+
 
   ngOnInit(): void {
 
@@ -78,7 +82,7 @@ export class VacacionesDashComponent implements  OnInit{
     )
   }
 
-  //filtro para buscar en las tablas
+  //filtro para el calenario, bloquea los fines de semana
   myFilter = (d: Date | null): boolean => {
 
     const day = (d || new Date()).getDay();
@@ -103,6 +107,14 @@ export class VacacionesDashComponent implements  OnInit{
 
     this.vacacion.numDias = dias;
   }
+
+  // selectionChange(event: FormBuilder) {
+  //   console.log(event.selectedStep.label);
+  //   let stepLabel = event.selectedStep.label;
+  //   if (stepLabel == "Step 2") {
+  //     console.log("CLICKED STEP 2");
+  //   }
+  // }
 
   //este metodo calcula la fecha de regreso desde el backend
   onClick(){

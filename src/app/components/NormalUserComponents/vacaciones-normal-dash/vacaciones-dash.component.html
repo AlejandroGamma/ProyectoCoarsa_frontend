@@ -11,7 +11,7 @@
       <ng-template matStepLabel>Escoger la fecha de inicio</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Escoge una fecha</mat-label>
-        <input matInput [matDatepickerFilter]="myFilter" [(ngModel)]="fechaInicio" formControlName="firstCtrl" (dateChange)="updateDOB($event)" [matDatepicker]="picker" required>
+        <input matInput [matDatepickerFilter]="myFilter" [min]="todayDate" [(ngModel)]="fechaInicio" formControlName="firstCtrl" (dateChange)="updateDOB($event)" [matDatepicker]="picker" required>
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -21,12 +21,12 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Escoger la cantidad de dias</ng-template>
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable" (animationDone)="onClick()" >
+    <form [formGroup]="secondFormGroup" >
+      <ng-template matStepLabel >Escoger la cantidad de dias</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Días a disfrutar</mat-label>
-        <input matInput formControlName="secondCtrl" type="number" min="0" [(ngModel)]="vacacion.numDias"  placeholder="dias"
+        <input matInput formControlName="secondCtrl" type="number" min="0" max="15" [(ngModel)]="vacacion.numDias"  placeholder="dias"
                required>
       </mat-form-field>
       <div>
@@ -35,8 +35,8 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
-    <form [formGroup]="thirdFormGroup">
+  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable" >
+    <form [formGroup]="thirdFormGroup" (click)="onClick()" >
       <ng-template matStepLabel>Verificar datos</ng-template>
 
       <br><br>
