@@ -16,5 +16,6 @@ export class PerfileNormalUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
+    console.log(this.user);
   }
 }

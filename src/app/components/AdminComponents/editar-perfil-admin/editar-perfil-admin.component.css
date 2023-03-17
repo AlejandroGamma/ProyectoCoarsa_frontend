@@ -9,7 +9,7 @@
 }
 
 .container-card{
- height: 800px;
+ max-height:120%;
   padding: 20px;
 }
 .example-container mat-form-field   {
@@ -22,3 +22,7 @@
 }
 
 
+.mat-table-container{
+  padding: 3%;
+
+}

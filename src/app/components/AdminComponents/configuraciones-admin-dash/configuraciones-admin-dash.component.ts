@@ -103,10 +103,12 @@ export class ConfiguracionesAdminDashComponent implements  OnInit{
 
     getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'Debe de colocar un correo';
+    } else if (this.email.hasError('email')){
+      return this.email.hasError('email') ? 'No es un correo valido' : '';
     }
+      return 'Debe de colocar un correo';
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
 }

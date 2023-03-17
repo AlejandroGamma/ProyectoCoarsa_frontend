@@ -70,11 +70,15 @@ formSubmit(){
         console.log(error);
         if (error.status === 401){
           this.snack.open('ERROR! El usuario no existe o está suspendido', 'Aceptar', {
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
             duration: 3000,
             panelClass: ['error-snackbar'],
           })
         }else {
           this.snack.open(error.error.message, 'Aceptar', {
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
             duration: 3000,
             panelClass: ['error-snackbar'],
           })

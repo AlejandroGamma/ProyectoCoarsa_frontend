@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import swal from "sweetalert2";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {FormControl, FormGroup, isFormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-editar-perfil-admin',
   templateUrl: './editar-perfil-admin.component.html',
   styleUrls: ['./editar-perfil-admin.component.css']
 })
-export class EditarPerfilAdminComponent {
+export class EditarPerfilAdminComponent implements OnInit{
 
 
   public user = {
@@ -47,8 +48,17 @@ export class EditarPerfilAdminComponent {
     newPassword: '',
     confirmPassword : ''
   }
-
   id!:number;
+
+  newPassword = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]);
+    userFormGroup = new FormGroup({
+
+      email : new FormControl('', [Validators.required, Validators.email]),
+      firstName : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      lastName : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      username : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)])
+  })
+
 
   constructor(private userService:UserService, private router:Router,private route:ActivatedRoute, private _snackBar: MatSnackBar) {
   }
@@ -65,28 +75,39 @@ export class EditarPerfilAdminComponent {
 
 
   formSubmit(){
-    this.userEnviar.username = this.user.username;
-    this.userEnviar.firstName = this.user.firstName;
-    this.userEnviar.lastName = this.user.lastName;
-    this.userEnviar.email = this.user.email;
-    console.log( "xx" + this.userEnviar)
-    this.userService.actulizarUsuario(this.userEnviar).subscribe(
+    if (this.userFormGroup.invalid) {
+      this._snackBar.open('Problema con los datos introducidos.', 'Aceptar', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right'
+      });
+      return;
+    } else{
+      this.userEnviar.username = this.user.username;
+      this.userEnviar.firstName = this.user.firstName;
+      this.userEnviar.lastName = this.user.lastName;
+      this.userEnviar.email = this.user.email;
 
-      (data:any) => {
-        swal.fire(
-          'Empleado Actualizado',
-          'El empleado ha sido actualizado con exito',
-          'success'
-        )
-        this.router.navigate(["/admin/usuarios"]);
+      this.userService.actulizarUsuario(this.userEnviar).subscribe(
+
+        (data:any) => {
+          swal.fire(
+            'Empleado Actualizado',
+            'El empleado ha sido actualizado con exito',
+            'success'
+          )
+          this.router.navigate(["/admin/usuarios"]);
 
 
-    },error => console.log(error));
+        },error => console.log(error));
+    }
+
   }
 
   formSubmitPassword() {
-    if (this.ChangePassword.newPassword == '' || this.ChangePassword.confirmPassword == null || this.ChangePassword.confirmPassword == '' || this.ChangePassword.confirmPassword == null ) {
-      this._snackBar.open('El nombre de usuario es requerido !!', 'Aceptar', {
+
+    if (this.userFormGroup.errors) {
+      this._snackBar.open('Problema con los datos introducidos.', 'Aceptar', {
         duration: 3000,
         verticalPosition: 'top',
         horizontalPosition: 'right'
@@ -116,4 +137,21 @@ export class EditarPerfilAdminComponent {
     }
   }
 
+
+
+
+
+  getErrorMessagePasswordForm() {
+
+    if (this.newPassword.hasError('required')) {
+      return 'Debe de colocar una clave';
+    } else if (this.newPassword.hasError('minlength')){
+      return 'La clave debe de contener como minimo 6 caracteres';
+    } else if(this.newPassword.hasError('maxlength')){
+      return 'La clave debe de contener como maximo 20 caracteres' ;
+    }
+
+    return 'Problema con los datos introducidos';
+
+  }
 }

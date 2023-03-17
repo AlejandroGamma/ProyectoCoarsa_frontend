@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 import swal from 'sweetalert2'
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -21,54 +21,46 @@ export class SignupComponent implements  OnInit{
     email : '',
     telefono : ''
   }
-  userReg  = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(2)]],
-    password: ['', Validators.required],
-    confirmPassword: ['', Validators.required],
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    email: ['', Validators.required],
-    telefono: ['', Validators.required]
+
+  //validador del form
+  userRegForm  = this.fb.group({
+    username: ['', [Validators.required, Validators.minLength(3)]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmPassword: ['', [Validators.required,Validators.minLength(6)]],
+    firstName: ['', [Validators.required,Validators.minLength(3)]],
+    lastName: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.email, Validators.minLength(3)]],
+    telefono: ['', [Validators.required, Validators.minLength(8)]]
   });
 
 
  constructor(private userService: UserService,private snack:MatSnackBar, private fb: FormBuilder ) {
  }
   ngOnInit(): void {
-/*    this.userReg = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(2)]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      telefono: ['', Validators.required]
-    });*/
+
   }
 
   formSubmit() {
-    console.log(this.userReg);
-/*    if (this.userReg.username == '' || this.user.username == null) {
-      this.snack.open('El nombre de usuario es requerido !!', 'Aceptar', {
-        duration: 3000,
-        verticalPosition: 'top',
-        horizontalPosition: 'right'
-      });
-      return;
-    }*/
-    this.userService.añadiUsuario(this.userReg.value).subscribe(
-      (data)=>{
-        console.log(data);
-        swal.fire('Usuario guardado', 'Usuario guardado con exito en el sistema', 'success' )
-        this.userReg.reset();
-      },(error)=>{
-        console.log(error);
-        this.snack.open(error.error.message, 'Aceptar', {
-          duration: 3000,
-          panelClass: ['error-snackbar'],
-        })
-      }
-    )
+    console.log(this.userRegForm);
+
+    if (!this.userRegForm.invalid){
+      this.userService.añadiUsuario(this.userRegForm.value).subscribe(
+        (data)=>{
+          console.log(data);
+          swal.fire('Usuario guardado', 'Usuario guardado con exito en el sistema', 'success' )
+          this.userRegForm.reset();
+        },(error)=>{
+          console.log(error);
+          this.snack.open(error.error.message, 'Aceptar', {
+            duration: 3000,
+            panelClass: ['error-snackbar'],
+          })
+        }
+      )
+    }
+
   }
+
+
 
 }

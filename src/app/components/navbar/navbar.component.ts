@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit{
 
   onClickPerfilButton(){
     if (this.loginService.getUserRole()==='ADMIN'){
-      this.router.navigate(['/admin/perfile-normal'])
+      this.router.navigate(['/admin/perfil'])
     } else {
       this.router.navigate(['/user-dashboard/perfil'])
     }

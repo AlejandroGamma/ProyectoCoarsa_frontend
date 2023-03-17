@@ -1,7 +1,7 @@
 
-<h1>Actualizar datos del usuario </h1>
-<mat-card class="container-card">
 
+<mat-card class="mat-table-container">
+  <h1>Actualizar datos del usuario </h1>
 <mat-card class="example-card">
   <mat-card-header>
 
@@ -12,28 +12,37 @@
   </mat-card-header>
   <mat-card-content>
     <div class="example-container">
-    <form (ngSubmit)="formSubmit()"  >
+    <form (ngSubmit)="formSubmit()" [formGroup]="userFormGroup"  >
 
       <mat-form-field  appearance="fill">
         <mat-label>Nombre</mat-label>
-        <input matInput  id="nombre" name="nombre" [(ngModel)] = "user.firstName">
-
+        <input matInput  id="nombre" formControlName="firstName" name="nombre" [(ngModel)] = "user.firstName">
+        <mat-error *ngIf="userFormGroup.controls.firstName.errors?.['required']">Debe de colocar su nombre ( minimo 3 caracteres). </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.firstName.errors?.['minlength']">Debe de colocar su nombre ( minimo 3 caracteres). </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.firstName.errors?.['maxlength']">Debe de colocar su nombre ( minimo 20 caracteres). </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Apellido</mat-label>
-        <input [(ngModel)]= "user.lastName" name = "apellido" matInput  >
-
+        <input [(ngModel)]= "user.lastName"  formControlName="lastName"  name = "apellido" matInput  >
+        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['required']">Debe de colocar su apellido ( minimo 3 caracteres). </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['minlength']">Debe de colocar su apellido ( minimo 3 caracteres). </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['maxlength']">Debe de colocar su apellido ( minimo 20 caracteres). </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Correo</mat-label>
-        <input  [(ngModel)]= "user.email"  name = "email" type="email" matInput  >
+        <input  [(ngModel)]= "user.email"  formControlName="email"  name = "email" type="email" matInput  >
+        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['required']">Debe de colocar una correo valido. </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['email']">Formato de correo no valio, ejemplo coarsa@coarsa.com. </mat-error>
+
 
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
-        <input  [(ngModel)]= "user.username"  name = "username" type="username" matInput  >
+        <input  [(ngModel)]= "user.username" formControlName="username"  name = "username" type="username" matInput  >
+        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['required']">Debe de colocar el nombre de usuario ( minimo 3 caracteres). </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['minlength']">Debe de colocar el nombre de usuario ( minimo 3 caracteres). </mat-error>
 
       </mat-form-field>
 
@@ -49,8 +58,9 @@
 </mat-card>
   <br>
   <mat-card class="example-card">
-
+    <mat-card-header>
     <mat-card-title>Cambiar contraseña del usuario: {{user.firstName}}</mat-card-title>
+      </mat-card-header>
     <br><br>
     <div class="example-container">
       <mat-card-content>
@@ -58,8 +68,8 @@
 
         <mat-form-field  appearance="fill">
           <mat-label>Contraseña</mat-label>
-          <input matInput  id="contrasenna" name="contrasenna" type="password" [(ngModel)] = "ChangePassword.newPassword">
-
+          <input matInput  id="contrasenna" name="contrasenna" type="password"  [formControl]="newPassword"  [(ngModel)] = "ChangePassword.newPassword">
+          <mat-error *ngIf="newPassword.invalid">{{getErrorMessagePasswordForm()}}</mat-error>
         </mat-form-field>
 
         <mat-form-field  appearance="fill">
@@ -67,7 +77,6 @@
           <input matInput  id="confcontrasenna" name="confcontrasenna" type="password" [(ngModel)] = "ChangePassword.confirmPassword">
 
         </mat-form-field>
-
 
 
         <div class="button-actualizar">
