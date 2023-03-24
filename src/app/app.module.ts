@@ -50,7 +50,7 @@ import { EditarPerfilAdminComponent } from './components/AdminComponents/editar-
 import { CrearNuevoUsuarioAdminComponent } from './components/AdminComponents/crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component';
 import { InicioAdminComponent } from './components/AdminComponents/inicio-admin/inicio-admin.component';
 import { NgxSpinnerModule } from "ngx-spinner";
-
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +107,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     MatExpansionModule,
     MatTooltipModule,
     NgxSpinnerModule,
-    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+    MatSelectModule
 
 
   ],

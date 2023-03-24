@@ -9,7 +9,7 @@
 
 
         </div>
-        <h1 class="text-center"> Registrarse</h1>
+        <h1 class="text-center"> <strong>Registro de Usuario</strong></h1>
 
             <div class="form-container">
           <form (ngSubmit) = "formSubmit()" [formGroup]="userRegForm">
@@ -17,9 +17,9 @@
               <mat-label>Nombre de usuario</mat-label>
               <input required formControlName="username" type="text" matInput >
               <mat-hint>El nombre de usuario debe ser único</mat-hint>
-              <mat-error *ngIf="userRegForm.controls.lastName.errors?.['required']">El nombre de usuario debe ser único ( minimo 3 caracteres).  </mat-error>
-              <mat-error *ngIf="userRegForm.controls.lastName.errors?.['minlength']">El nombre de usuario debe de contener minimo 3 caracteres. </mat-error>
-              <mat-error *ngIf="userRegForm.controls.lastName.errors?.['maxlength']">El nombre de usuario debe de contener maximo 15 caracteres. </mat-error>
+              <mat-error *ngIf="userRegForm.controls.username.errors?.['required']">El nombre de usuario debe ser único ( minimo 3 caracteres).  </mat-error>
+              <mat-error *ngIf="userRegForm.controls.username.errors?.['minlength']">El nombre de usuario debe de contener minimo 3 caracteres. </mat-error>
+              <mat-error *ngIf="userRegForm.controls.username.errors?.['maxlength']">El nombre de usuario debe de contener maximo 15 caracteres. </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width"  appearance = "outline">
@@ -42,6 +42,7 @@
               <mat-error *ngIf="userRegForm.controls.firstName.errors?.['required']">Debe de colocar su nombre ( minimo 3 caracteres). </mat-error>
               <mat-error *ngIf="userRegForm.controls.firstName.errors?.['minlength']">Debe de colocar su nombre ( minimo 3 caracteres). </mat-error>
               <mat-error *ngIf="userRegForm.controls.firstName.errors?.['maxlength']">Debe de colocar su nombre ( max 20 caracteres). </mat-error>
+              <mat-error *ngIf="userRegForm.controls.firstName.errors?.['pattern']">Caracteres no validos. </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width"  appearance = "outline">
@@ -50,6 +51,7 @@
               <mat-error *ngIf="userRegForm.controls.lastName.errors?.['required']">Debe de colocar su apellido ( minimo 3 caracteres). </mat-error>
               <mat-error *ngIf="userRegForm.controls.lastName.errors?.['minlength']">Debe de colocar su apellido ( minimo 3 caracteres). </mat-error>
               <mat-error *ngIf="userRegForm.controls.lastName.errors?.['maxlength']">Debe de colocar su apellido ( max 20 caracteres). </mat-error>
+              <mat-error *ngIf="userRegForm.controls.lastName.errors?.['pattern']">Caracteres no validos. </mat-error>
             </mat-form-field>
 
             <mat-form-field class="full-width"  appearance = "outline">

@@ -9,7 +9,7 @@
     <h2>Solicitudes de Vacaciones en Espera</h2>
 
     <mat-form-field>
-      <mat-label>Filter</mat-label>
+      <mat-label>Filtro</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
     </mat-form-field>
     <table mat-table [dataSource]="this.tableDataSource1" matSort>
@@ -59,7 +59,7 @@
   <mat-card class="mat-table-wrapper-tables">
   <h2>Historial de Solicitudes de Vacaciones</h2>
   <mat-form-field>
-    <mat-label>Filter</mat-label>
+    <mat-label>Filtro</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
   </mat-form-field>
   <table mat-table [dataSource]="this.tableDataSource2" matSort>

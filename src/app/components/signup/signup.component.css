@@ -1,5 +1,6 @@
 .form-container{
   margin: 8%;
+
 }
 .mat-mdc-form-field{
   padding: 1%;
@@ -8,4 +9,8 @@
    margin:1% ;
   padding-left: 30%;
   padding-right:30%;
+}
+
+.example-card{
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12)
 }

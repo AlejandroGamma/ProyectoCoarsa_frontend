@@ -46,6 +46,16 @@
 
       </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccionar un rol</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="changeClient($event.value)"  formControlName="selected">
+        <mat-option *ngFor="let role of roles" [value]="role.name">
+         {{role.name}}
+        </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
 <div class="button-actualizar">
   <button mat-raised-button type="submit" color="primary">Actualizar</button>
   <button mat-raised-button [routerLink]="'/admin/usuarios'">Cancelar</button>

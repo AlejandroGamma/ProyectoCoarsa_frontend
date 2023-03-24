@@ -38,10 +38,7 @@ export class LoginService {
   public logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    this.snack.open('Se ha cerrado la sesión.','Aceptar', {
-      duration: 4000,
 
-    })
     return true;
   }
 

@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import swal from "sweetalert2";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {FormControl, FormGroup, isFormControl, Validators} from "@angular/forms";
+import {Role} from "../../../role";
+import {IUser} from "../../../IUser";
 
 @Component({
   selector: 'app-editar-perfil-admin',
@@ -13,18 +15,16 @@ import {FormControl, FormGroup, isFormControl, Validators} from "@angular/forms"
 export class EditarPerfilAdminComponent implements OnInit{
 
 
-  public user = {
-  //  id: '',
-    username : '',
-    //password : '',
-    firstName : '',
-    lastName : '',
-    email : '',
-    telefono : ''
-   // authorities: [
-
-  //  ]
-
+  public user: IUser = {
+    username: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    telefono: '',
+    role: {id: 0, name:''},
+    estado: true
   }
 
   //este otro objeto solamente envia estos atrributos y no devuelve un user con authorities y otros atributos que cuesta
@@ -36,10 +36,8 @@ export class EditarPerfilAdminComponent implements OnInit{
     firstName : '',
     lastName : '',
     email : '',
-    telefono : ''
-    // authorities: [
-
-    //  ]
+    telefono : '',
+    role : {id:0, name:''}
 
   }
 
@@ -50,13 +48,22 @@ export class EditarPerfilAdminComponent implements OnInit{
   }
   id!:number;
 
+  test!:string;
+  //este atributo es para el form field desplegable, se instancia en ngonit con role actual del usuario
+  selected: string = '';
+
+  //solamente roles que vienen desde el backend, instanciado en ngonit
+  roles! : Role [];
+
   newPassword = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]);
     userFormGroup = new FormGroup({
 
       email : new FormControl('', [Validators.required, Validators.email]),
       firstName : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       lastName : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-      username : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)])
+      username : new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      selected : new FormControl('', [Validators.required])
+
   })
 
 
@@ -68,13 +75,33 @@ export class EditarPerfilAdminComponent implements OnInit{
     this.userService.obtenerUsuario(this.id).subscribe(
       (data:any)=>{
         this.user = data;
-        console.log(this.user)
+        console.log("daatos" + this.user.role)
+         this.selected= this.user.role.name;
+        //this.user.authorities = data
+
+        //console.log(data.authorities[0].authority)
+       // console.log(this.user.authorities[0])
     }, error => console.log(error)
     );
+
+    this.userService.obtenerRoles().subscribe(
+      (data:any) =>{
+        this.roles = data;
+        //console.log( data);
+       // console.log( this.roles[0].name)
+      }
+    )
   }
 
+  changeClient(value:any) {
+
+      this.user.role.name = value;
+    this.test = value;
+    console.log(this.test );
+  }
 
   formSubmit(){
+    console.log(this.userFormGroup);
     if (this.userFormGroup.invalid) {
       this._snackBar.open('Problema con los datos introducidos.', 'Aceptar', {
         duration: 3000,
@@ -87,7 +114,9 @@ export class EditarPerfilAdminComponent implements OnInit{
       this.userEnviar.firstName = this.user.firstName;
       this.userEnviar.lastName = this.user.lastName;
       this.userEnviar.email = this.user.email;
-
+      this.userEnviar.role.name = this.user.role.name;
+      console.log(  this.user );
+      console.log(  this.userEnviar );
       this.userService.actulizarUsuario(this.userEnviar).subscribe(
 
         (data:any) => {

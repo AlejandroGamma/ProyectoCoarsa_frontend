@@ -1,5 +1,5 @@
 <mat-card class="mat-table-container">
-  <h1>Detalles del perfil</h1>
+  <h1>Detalles del Perfil</h1>
 
 
   <div class="div-wrapper">
@@ -16,14 +16,16 @@
         <p><Strong>Nombre de usuario: </Strong>{{user.username}}</p>
         <p><Strong>email: </Strong>{{user.email}}</p>
         <p><Strong>Rol: </Strong>{{user.authorities[0].authority}}</p>
-        <p><Strong>Rol: </Strong>{{user.enable ? "No activo" : "Activo"}}</p>
+        <p><Strong>Estado: </Strong>{{user.enable ? "No activo" : "Activo"}}</p>
       </mat-card-content>
 
     </mat-card>
 
-    <mat-card class="mat-table-wrapper-tables">
+    <!--<mat-card class="mat-table-wrapper-tables">
 
     </mat-card>
+    -->
+
   </div>
 
 </mat-card>

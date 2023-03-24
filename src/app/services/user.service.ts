@@ -43,4 +43,9 @@ export class UserService {
   public cambiarPasswordAdmin(passForm:any){
     return this.httpClient.put(`${baserUSL}/usuarios/actualizar/`, passForm)
   }
+
+  public obtenerRoles(){
+    return this.httpClient.get(`${baserUSL}/usuarios/roles/`)
+  }
+
 }

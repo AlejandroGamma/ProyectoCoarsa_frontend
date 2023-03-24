@@ -13,7 +13,7 @@
   </button>
   <button *ngIf ="!loginService.isLoggedIn()" mat-button [routerLink]="'/signup'" > <span>Registrarse</span>
   </button>
-  <button  *ngIf = "isLoggedIn && user" mat-button   >  <span  (click)="onClickPerfilButton()" > {{this.user.username}} </span>
+  <button  *ngIf = "isLoggedIn && user" mat-button  (click)="onClickPerfilButton()"  >  <span  > {{this.user.username}} </span>
     <mat-icon>account_box</mat-icon>
   </button>
   <button *ngIf ="loginService.isLoggedIn()" (click) = "logout()" mat-button >  <span>Cerrar sesión</span>

@@ -44,5 +44,6 @@ export class NavbarComponent implements OnInit{
       this.router.navigate(['/user-dashboard/perfil'])
     }
 
+    console.log("clickbutton")
   }
 }
