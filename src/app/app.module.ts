@@ -51,6 +51,7 @@ import { CrearNuevoUsuarioAdminComponent } from './components/AdminComponents/cr
 import { InicioAdminComponent } from './components/AdminComponents/inicio-admin/inicio-admin.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import {MatSelectModule} from '@angular/material/select';
+import { PrestamosAdminDashComponent } from './prestamos-admin-dash/prestamos-admin-dash.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ import {MatSelectModule} from '@angular/material/select';
     ConfiguracionesAdminDashComponent,
     EditarPerfilAdminComponent,
     CrearNuevoUsuarioAdminComponent,
-    InicioAdminComponent
+    InicioAdminComponent,
+    PrestamosAdminDashComponent
 
 
   ],
