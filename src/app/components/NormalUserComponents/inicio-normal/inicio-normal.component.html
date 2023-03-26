@@ -11,21 +11,27 @@
         organizacional de la empresa COARSA de las funciones
         de préstamos y vacaciones.
       </p>
+
       </mat-card-content>
-      <mat-card-actions>
+      <div align="center">
+        <img src="../../../assets/imagenInicio.png" width="800" height="500" >
+      </div>
 
-        <button mat-raised-button class="mat-raised-button-vacaciones" routerLink="/user-dashboard/perfil" routerLinkActive="activebutton">
-          <mat-icon mat-list-icon> account_circle</mat-icon> Perfil
-        </button>
+        <mat-card-actions>
 
-        <button mat-raised-button class="mat-raised-button-vacaciones" [routerLink]="['/user-dashboard/vacaciones']" routerLinkActive="activebutton">
-          <mat-icon mat-list-icon> filter drama icon</mat-icon> Vacaciones
-        </button>
-        <button mat-raised-button class="mat-raised-button-vacaciones" >
-          <mat-icon mat-list-icon>credit_card</mat-icon>Prestamos
-        </button>
+          <button mat-raised-button class="mat-raised-button-vacaciones"  routerLink="/user-dashboard/perfil" routerLinkActive="activebutton">
+            <mat-icon mat-list-icon> account_circle</mat-icon> Perfil
+          </button>
 
-      </mat-card-actions>
+          <button mat-raised-button class="mat-raised-button-vacaciones"  [routerLink]="['/user-dashboard/vacaciones']" routerLinkActive="activebutton">
+            <mat-icon mat-list-icon> filter drama icon</mat-icon> Vacaciones
+          </button>
+
+          <button mat-raised-button class="mat-raised-button-vacaciones">
+            <mat-icon mat-list-icon>credit_card</mat-icon>Prestamos
+          </button>
+
+        </mat-card-actions>
 
     </div>
   </mat-card>
