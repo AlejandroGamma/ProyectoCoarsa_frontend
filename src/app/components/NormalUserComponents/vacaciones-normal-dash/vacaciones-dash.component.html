@@ -12,7 +12,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Escoge una fecha</mat-label>
         <input matInput [matDatepickerFilter]="myFilter" [min]="todayDate" [(ngModel)]="fechaInicio" formControlName="firstCtrl" (dateChange)="updateDOB($event)" [matDatepicker]="picker" required>
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>MM/dd/aaaa</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

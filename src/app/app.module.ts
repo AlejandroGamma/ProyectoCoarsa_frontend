@@ -52,6 +52,8 @@ import { InicioAdminComponent } from './components/AdminComponents/inicio-admin/
 import { NgxSpinnerModule } from "ngx-spinner";
 import {MatSelectModule} from '@angular/material/select';
 import { PrestamosAdminDashComponent } from './prestamos-admin-dash/prestamos-admin-dash.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +116,7 @@ import { PrestamosAdminDashComponent } from './prestamos-admin-dash/prestamos-ad
 
 
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
