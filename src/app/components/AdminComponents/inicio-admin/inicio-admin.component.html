@@ -3,8 +3,38 @@
 <mat-card class="mat-table-container">
   <h1> Inicio </h1>
   <mat-card class="mat-card-wrapper-tables">
+    <h1>BIENVENIDO AL QUIOSCO INFORMATIVO INFO-RH </h1>
 
-    <h1>Inicio para usuarios administradores en desarrollo. Puede utilizar el menu para dirigirse a otras direcciones.</h1>
+    <div class="div-wrapper">
 
+      <mat-card-content>
+        <p>
+          Este es un sistema de gestión de solicitudes a nivel
+          organizacional de la empresa COARSA de las funciones
+          de préstamos y vacaciones.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+
+        <button mat-raised-button="mat-raised-button-vacaciones" [routerLink]="['/admin/perfil']" routerLinkActive="activebutton">
+          <mat-icon mat-list-icon> account_circle</mat-icon> Perfil
+        </button>
+        <button mat-raised-button class="mat-raised-button-vacaciones" [routerLink]="'/admin/vacaciones'" routerLinkActive="activebutton">
+          <mat-icon mat-list-icon> filter drama icon</mat-icon> Vacaciones
+        </button>
+        <button mat-raised-button class="mat-raised-button-vacaciones" [routerLink]="'/admin/prestamos'" routerLinkActive="activebutton">
+          <mat-icon mat-list-icon>credit_card</mat-icon>Prestamos
+        </button>
+        <button mat-raised-button class="mat-raised-button-vacaciones" routerLink="/admin/usuarios" routerLinkActive="activebutton">
+          <mat-icon>supervisor_account</mat-icon> Usuarios
+        </button>
+
+        <button mat-raised-button class="mat-raised-button-vacaciones"routerLink="/admin/configuraciones" routerLinkActive="activebutton">
+          <mat-icon>settings</mat-icon> Configuraciones
+        </button>
+
+      </mat-card-actions>
+
+    </div>
   </mat-card>
 </mat-card>

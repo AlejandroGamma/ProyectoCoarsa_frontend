@@ -8,15 +8,16 @@
         <mat-card-title>Perfil Personal</mat-card-title>
         <mat-card-subtitle>Datos personales </mat-card-subtitle>
       </mat-card-header>
-
       <br><br>
       <mat-card-content>
-        <p><Strong>Nombre: </Strong>{{user.firstName}} {{user.apellido}}</p>
+        <p><Strong>Nombre: </Strong>{{user.firstName}} {{user.apellido}}
+          <img src="../../../assets/coarsa.png" width="340" height="200" align="right"></p>
         <p><Strong>Apellido: </Strong>{{user.lastName}}</p>
         <p><Strong>Nombre de usuario: </Strong>{{user.username}}</p>
         <p><Strong>email: </Strong>{{user.email}}</p>
         <p><Strong>Rol: </Strong>{{user.authorities[0].authority}}</p>
         <p><Strong>Estado: </Strong>{{user.enable ? "No activo" : "Activo"}}</p>
+
       </mat-card-content>
 
     </mat-card>

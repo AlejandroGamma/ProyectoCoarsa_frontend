@@ -17,8 +17,9 @@ mat-grid-tile {
 
 }
 
-
-
-.mat-elevation-z8{
-  max-width: 90%;
+.example-container {
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #555;
 }
