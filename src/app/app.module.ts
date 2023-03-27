@@ -53,6 +53,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import {MatSelectModule} from '@angular/material/select';
 import { PrestamosAdminDashComponent } from './prestamos-admin-dash/prestamos-admin-dash.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import {PrestamosDashComponent} from "./components/NormalUserComponents/prestamos-normal-dash/prestamos-dash.component";
 
 @NgModule({
   declarations: [
@@ -75,8 +76,8 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     EditarPerfilAdminComponent,
     CrearNuevoUsuarioAdminComponent,
     InicioAdminComponent,
-    PrestamosAdminDashComponent
-
+    PrestamosAdminDashComponent,
+    PrestamosDashComponent
 
   ],
   imports: [

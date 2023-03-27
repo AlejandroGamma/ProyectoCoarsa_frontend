@@ -19,6 +19,7 @@ import {EditarPerfilAdminComponent} from "./components/AdminComponents/editar-pe
 import {CrearNuevoUsuarioAdminComponent} from "./components/AdminComponents/crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component";
 import {InicioAdminComponent} from "./components/AdminComponents/inicio-admin/inicio-admin.component";
 import {PrestamosAdminDashComponent} from "./prestamos-admin-dash/prestamos-admin-dash.component";
+import {PrestamosDashComponent} from "./components/NormalUserComponents/prestamos-normal-dash/prestamos-dash.component";
 
 const routes: Routes = [
 
@@ -89,6 +90,10 @@ const routes: Routes = [
       {
         path: 'vacaciones',
         component: VacacionesDashComponent
+      },
+      {
+        path: 'prestamos',
+        component: PrestamosDashComponent
       },
       {
         path: 'inicio',

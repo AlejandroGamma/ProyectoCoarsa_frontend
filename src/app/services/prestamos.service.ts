@@ -11,10 +11,17 @@ export class PrestamosService {
 
   }
 
+  public añadirPrestamo(prestamo:any){
+    return this.httpClient.post(`${baserUSL}/prestamos/`,prestamo)
+  }
+
   public obtenerTodasLasSolicitudes(){
     return this.httpClient.get(`${baserUSL}/prestamos/`)
   }
 
+  public obtenerSolicitudesPorUsuario(username:any){
+    return this.httpClient.get(`${baserUSL}/prestamos/solicitudesPrestamo/${username}`)
+  }
 
   rechazarSolicitudDePrestamos(id: any) {
 

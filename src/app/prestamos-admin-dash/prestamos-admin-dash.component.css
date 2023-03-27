@@ -1,9 +1,9 @@
-.example-button-row button,
+/*.example-button-row button,
 .example-button-row a {
   margin-right: 8px;
 }
 
-/* Success syling */
+/* Success syling *//*
 
 .mat-button.mat-success,
 .mat-stroked-button.mat-success {
@@ -39,3 +39,4 @@
 .mat-elevation-z8{
   max-width: 90%;
 }
+*/

@@ -15,6 +15,11 @@
       <mat-icon mat-list-icon> filter drama icon</mat-icon> Vacaciones
     </button>
     <mat-divider></mat-divider>
+    <mat-divider></mat-divider>
+    <button mat-list-item [routerLink]="['/user-dashboard/prestamos']" routerLinkActive="activebutton">
+      <mat-icon>credit_card</mat-icon>Prestamos
+    </button>
+    <mat-divider></mat-divider>
     <br>
     <mat-divider></mat-divider>
     <button mat-list-item (click) = "logout()" [routerLink]="['/login']" routerLinkActive="activebutton">
