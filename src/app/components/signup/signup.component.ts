@@ -5,6 +5,7 @@ import swal from 'sweetalert2'
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {IUser} from "../../IUser";
 import {Role} from "../../role";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -45,7 +46,7 @@ export class SignupComponent implements  OnInit {
   });
 
 
- constructor(private userService: UserService,private snack:MatSnackBar, private fb: FormBuilder ) {
+ constructor(private userService: UserService,private snack:MatSnackBar, private fb: FormBuilder, private router:Router) {
  }
   ngOnInit(): void {
 
@@ -70,6 +71,7 @@ export class SignupComponent implements  OnInit {
           console.log(data);
           swal.fire('Usuario guardado', 'Usuario guardado con exito en el sistema', 'success')
           this.userRegForm.reset();
+          this.router.navigate(['/login'])
         }, (error) => {
           console.log(error);
           this.snack.open(error.error.message, 'Aceptar', {

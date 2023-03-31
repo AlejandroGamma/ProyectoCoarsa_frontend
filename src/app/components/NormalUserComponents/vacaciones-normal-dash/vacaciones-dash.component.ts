@@ -158,9 +158,10 @@ export class VacacionesDashComponent implements  OnInit{
 
     Swal.fire({
       title: 'Solicitud de Vacaciones',
-      html: `<table id="table" border=1>
+      html: `<div> <table id="table" border=1 padding: "30%">
         <thead>
             <tr>
+            <th></th>
                 <th>ID</th>
                 <th>Cant de dias</th>
                 <th>Fecha de inico</th>
@@ -170,6 +171,7 @@ export class VacacionesDashComponent implements  OnInit{
         </thead>
         <tbody>
             <tr>
+            <td></td>
                 <td>${vacacion.id}</td>
                 <td>${vacacion.numDias}</td>
                 <td>${vacacion.fechaInicio}</td>
@@ -177,7 +179,8 @@ export class VacacionesDashComponent implements  OnInit{
             </tr>
 
 </tbody>
-</table>`
+</table></div>`
+
     })
 
   }

@@ -51,9 +51,10 @@ import { CrearNuevoUsuarioAdminComponent } from './components/AdminComponents/cr
 import { InicioAdminComponent } from './components/AdminComponents/inicio-admin/inicio-admin.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import {MatSelectModule} from '@angular/material/select';
-import { PrestamosAdminDashComponent } from './prestamos-admin-dash/prestamos-admin-dash.component';
+import { PrestamosAdminDashComponent } from './components/AdminComponents/prestamos-admin-dash/prestamos-admin-dash.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import {PrestamosDashComponent} from "./components/NormalUserComponents/prestamos-normal-dash/prestamos-dash.component";
+import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import {PrestamosDashComponent} from "./components/NormalUserComponents/prestamo
     CrearNuevoUsuarioAdminComponent,
     InicioAdminComponent,
     PrestamosAdminDashComponent,
-    PrestamosDashComponent
+    PrestamosDashComponent,
+    RecuperarPasswordComponent
 
   ],
   imports: [

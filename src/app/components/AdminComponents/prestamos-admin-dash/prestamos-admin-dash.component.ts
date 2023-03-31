@@ -2,8 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {PrestamosService} from "../services/prestamos.service";
-import {LoginService} from "../services/login.service";
+import {PrestamosService} from "../../../services/prestamos.service";
+import {LoginService} from "../../../services/login.service";
 import Swal from "sweetalert2";
 
 @Component({
@@ -66,15 +66,17 @@ constructor( private  prestamosService: PrestamosService, private login:LoginSer
 
     Swal.fire({
       title: 'Solicitud de Prestamo',
-      html: `<table id="table" border=1>
+      html: `<table id="table" border=1 padding: "60%">
         <thead>
             <tr>
+
                 <th>Cantidad de dinero</th>
 
             </tr>
         </thead>
         <tbody>
             <tr>
+
                 <td>${prestamo.monto}</td>
             </tr>
 

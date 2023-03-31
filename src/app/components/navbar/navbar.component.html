@@ -1,7 +1,12 @@
 
 <mat-toolbar color="primary">
   <a
-    [routerLink]="'/'"
+    *ngIf ="!loginService.isLoggedIn()" [routerLink]="'/login'"
+    mat-icon-button class="example-icon" arial-label="Example icon-button with menu icon">
+    <img src="../../../assets/coarsaLogo.png" width="60" height="60">
+  </a>
+  <a
+    *ngIf ="loginService.isLoggedIn()" (click)="onClickPerfilButton()"
     mat-icon-button class="example-icon" arial-label="Example icon-button with menu icon">
     <img src="../../../assets/coarsaLogo.png" width="60" height="60">
   </a>

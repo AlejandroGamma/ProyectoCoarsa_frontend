@@ -18,8 +18,9 @@ import {ConfiguracionesAdminDashComponent} from "./components/AdminComponents/co
 import {EditarPerfilAdminComponent} from "./components/AdminComponents/editar-perfil-admin/editar-perfil-admin.component";
 import {CrearNuevoUsuarioAdminComponent} from "./components/AdminComponents/crear-nuevo-usuario-admin/crear-nuevo-usuario-admin.component";
 import {InicioAdminComponent} from "./components/AdminComponents/inicio-admin/inicio-admin.component";
-import {PrestamosAdminDashComponent} from "./prestamos-admin-dash/prestamos-admin-dash.component";
+import {PrestamosAdminDashComponent} from "./components/AdminComponents/prestamos-admin-dash/prestamos-admin-dash.component";
 import {PrestamosDashComponent} from "./components/NormalUserComponents/prestamos-normal-dash/prestamos-dash.component";
+import {RecuperarPasswordComponent} from "./recuperar-password/recuperar-password.component";
 
 const routes: Routes = [
 
@@ -36,7 +37,12 @@ const routes: Routes = [
   {
     path : 'login',
     component : LoginComponent,
-    pathMatch : 'full'
+   pathMatch : 'full',
+
+  },
+  {
+    path: 'recuperar-clave',
+    component: RecuperarPasswordComponent
   },
   {
     path:'admin',
