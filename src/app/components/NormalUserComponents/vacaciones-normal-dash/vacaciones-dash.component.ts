@@ -107,13 +107,7 @@ export class VacacionesDashComponent implements  OnInit{
     this.vacacion.numDias = dias;
   }
 
-  // selectionChange(event: FormBuilder) {
-  //   console.log(event.selectedStep.label);
-  //   let stepLabel = event.selectedStep.label;
-  //   if (stepLabel == "Step 2") {
-  //     console.log("CLICKED STEP 2");
-  //   }
-  // }
+
 
   //este metodo calcula la fecha de regreso desde el backend
   onClick(){

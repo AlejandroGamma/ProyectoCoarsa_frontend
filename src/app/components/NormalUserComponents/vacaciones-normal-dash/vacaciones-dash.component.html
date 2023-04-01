@@ -21,9 +21,9 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable" (animationDone)="onClick()" >
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable" (click)="onClick()" >
     <form [formGroup]="secondFormGroup" >
-      <ng-template matStepLabel >Escoger la cantidad de dias</ng-template>
+      <ng-template matStepLabel  >Escoger la cantidad de dias</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Días a disfrutar</mat-label>
         <input matInput formControlName="secondCtrl" type="number" min="0" max="15" [(ngModel)]="vacacion.numDias"  placeholder="dias"
@@ -35,9 +35,9 @@
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable" >
-    <form [formGroup]="thirdFormGroup" (click)="onClick()" >
-      <ng-template matStepLabel>Verificar datos</ng-template>
+  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable"  >
+    <form [formGroup]="thirdFormGroup" >
+      <ng-template matStepLabel>  <div class="stepper-header-overlay" (click)="onClick()" ></div> Verificar datos </ng-template>
 
       <br><br>
       <mat-label><strong> Fecha de Inicio: </strong> </mat-label> <mat-label>{{vacacion.fechaInicio}}</mat-label>
