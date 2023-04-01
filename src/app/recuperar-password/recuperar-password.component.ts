@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import swal from "sweetalert2";
+import {UserService} from "../services/user.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-recuperar-password',
@@ -10,9 +12,12 @@ import swal from "sweetalert2";
 export class RecuperarPasswordComponent {
 
 
-  username = ''
+  private recuperarPassword = {
+    username : ''
+  }
 
-  constructor(private fb: FormBuilder) {
+
+  constructor(private fb: FormBuilder, private userServe: UserService, private snack:MatSnackBar) {
   }
 
   usernameForm = this.fb.group({
@@ -23,11 +28,26 @@ export class RecuperarPasswordComponent {
 
   formSubmit(){
     if (!this.usernameForm.invalid) {
+      this.recuperarPassword.username = this.usernameForm.value.username!;
+      console.log(this.recuperarPassword.username)
+      this.userServe.recuperarPassword(this.recuperarPassword).subscribe(
+        () =>{
+          swal.fire('Recuperación de contraseña', 'La nueva contraseña se ha enviado al correo.', 'success')
+          console.log(this.recuperarPassword.username)
+          this.usernameForm.reset();
+        }, (error) => {
+          console.log(error);
+          this.snack.open(error.error.message, 'Aceptar', {
+            duration: 3000,
+            panelClass: ['error-snackbar'],
+          })
+        }
+      )
 
-     this.username = this.usernameForm.value.username!;
-      console.log(this.username)
-      swal.fire('Recuperación de contraseña', 'Esto sigue en desarrollo :)', 'success')
-      this.usernameForm.reset();
+
+
+
+
     }
   }
 }

@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private  httpClient: HttpClient ) { }
 //se crea  un nuevo usuaerio
-  public añadiUsuario(user:any){
+  public addUsuario(user:any){
     return this.httpClient.post(`${baserUSL}/usuarios/`,user)
   }
 
@@ -47,5 +47,11 @@ export class UserService {
   public obtenerRoles(){
     return this.httpClient.get(`${baserUSL}/usuarios/roles/`)
   }
+
+  public recuperarPassword(recoPassDTO:any){
+
+    return this.httpClient.put(`${baserUSL}/usuarios/recuperar`, recoPassDTO)
+  }
+
 
 }

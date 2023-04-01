@@ -66,7 +66,7 @@ export class SignupComponent implements  OnInit {
             this.user.telefono = this.userRegForm.value.telefono!;
              //this.user.role = this.role;
       console.log(this.user);
-      this.userService.añadiUsuario(this.user).subscribe(
+      this.userService.addUsuario(this.user).subscribe(
         (data) => {
           console.log(data);
           swal.fire('Usuario guardado', 'Usuario guardado con exito en el sistema', 'success')
