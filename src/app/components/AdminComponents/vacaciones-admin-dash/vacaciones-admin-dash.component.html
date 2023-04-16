@@ -9,8 +9,8 @@
     <h2>Solicitudes de Vacaciones en Espera</h2>
 
     <mat-form-field>
-      <mat-label>Filtro</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      <mat-label>Filtrar</mat-label>
+      <input matInput (keyup)="filtroPrimeraTabla($any($event).target.value)" placeholder="Buscar especificamente" #input>
     </mat-form-field>
     <table mat-table [dataSource]="this.tableDataSource1" matSort>
       <ng-container matColumnDef="Id">
@@ -59,8 +59,8 @@
   <mat-card class="mat-table-wrapper-tables">
   <h2>Historial de Solicitudes de Vacaciones</h2>
   <mat-form-field>
-    <mat-label>Filtro</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="filtroSegundaTabla($any($event).target.value)" placeholder="Buscar especificamente" #Filter>
   </mat-form-field>
   <table mat-table [dataSource]="this.tableDataSource2" matSort>
     <ng-container matColumnDef="Id">

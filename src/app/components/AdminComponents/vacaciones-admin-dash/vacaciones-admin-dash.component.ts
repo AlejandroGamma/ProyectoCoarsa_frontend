@@ -6,6 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from "@angular/material/sort";
 import {UserService} from "../../../services/user.service";
 import {LoginService} from "../../../services/login.service";
+import {TableEmptyFilter} from "../../../tableEmptyFilter";
+import {Solicitud} from "../../../solicitud";
+import {IUser} from "../../../IUser";
 
 @Component({
   selector: 'app-vacaciones-admin-dash',
@@ -15,9 +18,19 @@ import {LoginService} from "../../../services/login.service";
 export class VacacionesAdminDashComponent implements  OnInit{
   //solicitudesVacaciones:any  = []
 
+  //informacion para armar el filtro de las tablas (tabla 1 en espera)
+  empFilters1: TableEmptyFilter[] = [];
+  SolicitudsData1!: Solicitud[];
+
+
+  //informacion para armar el filtro de las tablas (tabla 2 todas las solicitudes)
+  empFilters2: TableEmptyFilter[] = [];
+  SolicitudsData2!: Solicitud[];
+
+
   //atributos para las tablas, paginator y sort
   displayedColumns1: string[] = ['Id','Solicitante', 'FechaCreacion', 'Estado', 'Solicitud', 'Acciones'];
-  tableDataSource1 = new MatTableDataSource();
+  tableDataSource1 = new MatTableDataSource(this.SolicitudsData1);
   @ViewChild(MatPaginator) paginator1!: MatPaginator
   @ViewChild(MatSort) matSort1! : MatSort;
 
@@ -25,7 +38,7 @@ export class VacacionesAdminDashComponent implements  OnInit{
   @ViewChild('paginatorHistorial') paginatorHistorial!: MatPaginator;
 
   displayedColumns2: string[] = ['Id','Solicitante', 'FechaCreacion', 'Estado', 'Solicitud', 'Acciones'];
-  tableDataSource2 = new MatTableDataSource();
+  tableDataSource2 = new MatTableDataSource(this.SolicitudsData2);
   @ViewChild(MatPaginator) paginator2!: MatPaginator
   @ViewChild(MatSort) matSort2! : MatSort;
 
@@ -38,6 +51,22 @@ export class VacacionesAdminDashComponent implements  OnInit{
 
     this.obtenerLasSolicitudesDeVacacionEspera();
     this.obtenerTodasLasSolicitudesDeVacaciones();
+    //esta fila de abajo tambien se necesita para poder utilizar el filter, en este caso
+    //la tabla de vaca en espera y aqui se filtra por atributo de la interfaz Solicitud
+    this.tableDataSource1.filterPredicate = function(solicitud, filter: string): boolean {
+      const strId = String(solicitud.id);
+      const nameSecondName = solicitud.usuario.firstName +' '+ solicitud.usuario.lastName; //variable para unir name y apellido
+      return solicitud.usuario.firstName.toLowerCase().includes(filter) ||  solicitud.usuario.lastName.toLowerCase().includes(filter) || solicitud.estado.toLowerCase().includes(filter)
+        || solicitud.fechaCreacion.toLowerCase().includes(filter) || strId.includes(filter) ||  nameSecondName.toLowerCase().includes(filter);
+    };
+    //esta fila de abajo tambien se necesita para poder utilizar el filter, en este caso
+    //la tabla de todas las vacaciones
+    this.tableDataSource2.filterPredicate = function(solicitud, filter: string): boolean {
+      const strId = String(solicitud.id);
+      const nameSecondName = solicitud.usuario.firstName +' '+ solicitud.usuario.lastName;
+      return solicitud.usuario.firstName.toLowerCase().includes(filter) ||  solicitud.usuario.lastName.toLowerCase().includes(filter) || solicitud.estado.toLowerCase().includes(filter)
+        || solicitud.fechaCreacion.toLowerCase().includes(filter) || strId.includes(filter) ||  nameSecondName.toLowerCase().includes(filter);
+    };
   }
 
 
@@ -48,7 +77,8 @@ export class VacacionesAdminDashComponent implements  OnInit{
         this.tableDataSource1.paginator = this.paginatorEnEspera;
         this.tableDataSource1.sort = this.matSort1;
 
-        console.log(this.tableDataSource1.data);
+         this.SolicitudsData1 = data;
+
       },
       (error)=>{
 
@@ -64,18 +94,20 @@ export class VacacionesAdminDashComponent implements  OnInit{
         this.tableDataSource2.data = data;
         this.tableDataSource2.paginator = this.paginatorHistorial;
         this.tableDataSource2.sort = this.matSort2;
-        console.log(this.tableDataSource2.data);
+        this.SolicitudsData2 = data;
       }
     )
   }
   //filtrro para la tabla
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.tableDataSource2.filter = filterValue.trim().toLowerCase();
+  filtroPrimeraTabla(value: string) {
 
-    if (this.tableDataSource2.paginator) {
-      this.tableDataSource2.paginator.firstPage();
-    }
+    this.tableDataSource1.filter = value.trim().toLocaleLowerCase();
+
+  }
+
+  filtroSegundaTabla(value: string) {
+    this.tableDataSource2.filter = value.trim().toLocaleLowerCase();
+
   }
 
   onClickVerSolicitud(vacacion:any){

@@ -55,6 +55,7 @@ import { PrestamosAdminDashComponent } from './components/AdminComponents/presta
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import {PrestamosDashComponent} from "./components/NormalUserComponents/prestamos-normal-dash/prestamos-dash.component";
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
+import {MatTableFilterModule} from "mat-table-filter";
 
 @NgModule({
   declarations: [
@@ -115,7 +116,10 @@ import { RecuperarPasswordComponent } from './recuperar-password/recuperar-passw
     MatTooltipModule,
     NgxSpinnerModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
-    MatSelectModule
+    MatSelectModule,
+    MatTableFilterModule,
+    MatFormFieldModule,
+    MatInputModule,
 
 
   ],

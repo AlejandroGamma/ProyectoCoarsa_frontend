@@ -38,6 +38,7 @@ export class AuthInterceptor implements HttpInterceptor{
           return
         }
         this.loginService.logout();
+        window.location.reload();
         this.router.navigate(['login'])
         this.snack.open('La sesión ha expirado, vuelva a iniciar sesión.','Aceptar', {
           duration: 6000,
