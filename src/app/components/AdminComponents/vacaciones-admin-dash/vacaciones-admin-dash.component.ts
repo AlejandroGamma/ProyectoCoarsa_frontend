@@ -19,12 +19,12 @@ export class VacacionesAdminDashComponent implements  OnInit{
   //solicitudesVacaciones:any  = []
 
   //informacion para armar el filtro de las tablas (tabla 1 en espera)
-  empFilters1: TableEmptyFilter[] = [];
+
   SolicitudsData1!: Solicitud[];
 
 
   //informacion para armar el filtro de las tablas (tabla 2 todas las solicitudes)
-  empFilters2: TableEmptyFilter[] = [];
+
   SolicitudsData2!: Solicitud[];
 
 
