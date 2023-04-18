@@ -112,19 +112,22 @@ export class VacacionesDashComponent implements  OnInit{
   //este metodo calcula la fecha de regreso desde el backend
   onClick(){
 
-    this.vacacionesService.calcularFechaRegreso(this.vacacion).subscribe(
-      (data:any) => {
-        console.log(data);
-              this.vacacion.fechaFinal = data.fechaFinal;
-        console.log(this.vacacion);
-    },(error)=>{
-        console.log(error);
-        this.snack.open(error.error.message, 'Aceptar', {
-          duration: 3000
+    if (this.firstFormGroup.valid && this.secondFormGroup.valid){
+      this.vacacionesService.calcularFechaRegreso(this.vacacion).subscribe(
+        (data:any) => {
+          console.log(data);
+          this.vacacion.fechaFinal = data.fechaFinal;
+          console.log(this.vacacion);
+        },(error)=>{
+          console.log(error);
+          this.snack.open(error.error.message, 'Aceptar', {
+            duration: 3000
+          })
         })
-      })
 
-    console.log(this.vacacion)
+      console.log(this.vacacion)
+    }
+
   }
 
   //envia la vacacion  y la guarda en el backend
