@@ -37,7 +37,7 @@
       </ng-container>
       <ng-container matColumnDef="Solicitud">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> Solicitud </th>
-        <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="success"  (click)="onClickVerSolicitud(soli.vacacion)">Ver</button> </td>
+        <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="success"  (click)="openDialog(soli.vacacion)">Ver</button> </td>
 
       </ng-container>
       <ng-container matColumnDef="Acciones">
@@ -87,7 +87,7 @@
     </ng-container>
     <ng-container matColumnDef="Solicitud">
       <th mat-header-cell mat-sort-header *matHeaderCellDef> Solicitud </th>
-      <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="success"  (click)="onClickVerSolicitud(soli.vacacion)">Ver</button> </td>
+      <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="success"  (click)="openDialog(soli.vacacion)">Ver</button> </td>
 
     </ng-container>
     <ng-container matColumnDef="Acciones">

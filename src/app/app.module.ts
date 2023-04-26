@@ -30,13 +30,19 @@ import {MatTableModule} from '@angular/material/table';
 import { SidebarNormalUserComponent } from './components/NormalUserComponents/sidebar-normal-user/sidebar-normal-user.component';
 import { PerfileNormalUserComponent } from './components/NormalUserComponents/perfile-normal-user/perfile-normal-user.component';
 import {MatStepperModule} from '@angular/material/stepper';
-import { VacacionesDashComponent } from './components/NormalUserComponents/vacaciones-normal-dash/vacaciones-dash.component';
+import {
+  DialogDataDialog,
+  VacacionesDashComponent
+} from './components/NormalUserComponents/vacaciones-normal-dash/vacaciones-dash.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import { InicioNormalComponent } from './components/NormalUserComponents/inicio-normal/inicio-normal.component';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { VacacionesAdminDashComponent } from './components/AdminComponents/vacaciones-admin-dash/vacaciones-admin-dash.component';
+import {
+  DialogAdminDataDialog,
+  VacacionesAdminDashComponent
+} from './components/AdminComponents/vacaciones-admin-dash/vacaciones-admin-dash.component';
 import { UsuariosAdminDashComponent } from './components/AdminComponents/usuarios-admin-dash/usuarios-admin-dash.component';
 import { ConfiguracionesAdminDashComponent } from './components/AdminComponents/configuraciones-admin-dash/configuraciones-admin-dash.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -55,7 +61,7 @@ import { PrestamosAdminDashComponent } from './components/AdminComponents/presta
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import {PrestamosDashComponent} from "./components/NormalUserComponents/prestamos-normal-dash/prestamos-dash.component";
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
-
+import {DialogModule} from '@angular/cdk/dialog';
 
 @NgModule({
   declarations: [
@@ -80,8 +86,9 @@ import { RecuperarPasswordComponent } from './recuperar-password/recuperar-passw
     InicioAdminComponent,
     PrestamosAdminDashComponent,
     PrestamosDashComponent,
-    RecuperarPasswordComponent
-
+    RecuperarPasswordComponent,
+    DialogDataDialog,
+    DialogAdminDataDialog
   ],
   imports: [
     BrowserModule,
@@ -119,6 +126,7 @@ import { RecuperarPasswordComponent } from './recuperar-password/recuperar-passw
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
+    DialogModule
 
 
   ],

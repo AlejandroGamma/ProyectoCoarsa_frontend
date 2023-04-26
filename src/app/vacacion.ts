@@ -1,5 +1,6 @@
 export interface Vacacion {
   numDias: string,
-  fechaIncio: string,
+  fechaInicio: string,
   fechaFinal: string
+  id: number
 }

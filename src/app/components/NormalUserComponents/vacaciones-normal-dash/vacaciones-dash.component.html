@@ -45,10 +45,13 @@
       <mat-label><strong> Cantidad de dias: </strong></mat-label> <mat-label>{{vacacion.numDias}}</mat-label>
       <br><br>
       <mat-label><strong> Fecha de regreso: </strong></mat-label> <mat-label>{{vacacion.fechaFinal}}</mat-label>
+      <mat-error *ngIf="vacacion.fechaFinal==''">Cantidad de días no validos. Posiblemente ya ha solicitado más de 15 días de vacaciones. </mat-error>
+
       <br><br>
       <div>
         <button mat-raised-button class="mat-raised-button-vacaciones" matStepperPrevious >Atras</button>
-        <button mat-raised-button class="mat-raised-button-vacaciones"  matStepperNext>Siguiente</button>
+        <button mat-raised-button class="mat-raised-button-vacaciones"  [disabled]="vacacion.fechaFinal==''"  matStepperNext>Siguiente</button>
+        <button mat-raised-button class="mat-raised-button-vacaciones" (click)="stepper.reset()">Cancelar</button>
       </div>
     </form>
   </mat-step>
@@ -56,7 +59,8 @@
     <ng-template matStepLabel  >Enviar</ng-template>
     <p>Enviar solicitud de vacaciones para ser aprobada.</p>
     <div>
-      <button mat-raised-button matStepperNext class="mat-raised-button-vacaciones" (click)="sendClick()"  (click)="stepper.reset()">Enviar solicitud</button>
+      <button mat-raised-button matStepperNext class="mat-raised-button-vacaciones" [disabled]="vacacion.fechaFinal==''" (click)="sendClick()"  (click)="stepper.reset()">Enviar solicitud</button>
+      <button mat-raised-button class="mat-raised-button-vacaciones" (click)="stepper.reset()">Cancelar</button>
       <button mat-raised-button class="mat-raised-button-vacaciones" (click)="stepper.reset()">Crear otra solicitud</button>
     </div>
   </mat-step>
@@ -90,7 +94,7 @@
     </ng-container>
     <ng-container matColumnDef="Solicitud">
       <th mat-header-cell *matHeaderCellDef> Solicitud </th>
-      <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="primary"  (click)="onClickVerSolicitud(soli.vacacion)">Ver</button> </td>
+      <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="primary"  (click)="openDialog(soli.vacacion)">Ver</button> </td>
 
     </ng-container>
     <th mat-header-cell *matHeaderCellDef> Solicitud </th>

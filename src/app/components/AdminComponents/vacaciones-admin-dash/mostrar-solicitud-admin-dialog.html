@@ -1,0 +1,35 @@
+<span mat-dialog-title>Datos de solicitud </span>
+<mat-dialog-content class="mat-typography">
+  <ul>
+    <li>
+      <strong>Cantidad de días solicitados:</strong>  {{data.numDias}}
+    </li>
+    <li>
+      <strong>Fecha de inicio de las vacaciones:</strong> {{data.fechaInicio}}
+    </li>
+    <li>
+      <strong>Fecha de regreso de las vacaciones:</strong> {{data.fechaFinal}}
+    </li>
+  </ul>
+
+  <strong mat-dialog-title>Ver en el calendario. (solamente para esta solicitud) </strong>
+
+  <mat-form-field class="demo-inline-calendar-card" appearance="fill">
+
+    <mat-date-range-input
+      [formGroup]="campaignOne"
+      [rangePicker]="campaignOnePicker">
+      <input matStartDate placeholder="Start date" formControlName="start">
+      <input matEndDate placeholder="End date" formControlName="end">
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+    <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+  </mat-form-field>
+
+</mat-dialog-content>
+<div mat-dialog-actions>
+
+  <button mat-button mat-dialog-close cdkFocusInitial>Cerrar</button>
+
+</div>

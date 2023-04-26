@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {VacacionesService} from "../../../services/vacaciones.service";
@@ -11,6 +11,8 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {ThemePalette} from "@angular/material/core";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {Vacacion} from "../../../vacacion";
 
 
 @Component({
@@ -39,7 +41,7 @@ export class VacacionesDashComponent implements  OnInit{
 
 
 
-  constructor(private _formBuilder: FormBuilder, private vacacionesService:VacacionesService, private snack:MatSnackBar, private loginService:LoginService) {
+  constructor(private _formBuilder: FormBuilder, private vacacionesService:VacacionesService, private snack:MatSnackBar, private loginService:LoginService, private dialog: MatDialog) {
 
   }
 
@@ -119,6 +121,7 @@ export class VacacionesDashComponent implements  OnInit{
           this.vacacion.fechaFinal = data.fechaFinal;
           console.log(this.vacacion);
         },(error)=>{
+
           console.log(error);
           this.snack.open(error.error.message, 'Aceptar', {
             duration: 3000
@@ -182,9 +185,63 @@ export class VacacionesDashComponent implements  OnInit{
 
   }
 
+  openDialog(vacacion:Vacacion) {
+    var reverseFechaInicio = this.reverseStringFecha(vacacion.fechaInicio);
+    var reverseFechaFinal = this.reverseStringFecha(vacacion.fechaFinal);
+    this.dialog.open(DialogDataDialog, {
+      data: {
+        id: vacacion.id,
+        numDias: vacacion.numDias,
+        fechaInicio: reverseFechaInicio,
+        fechaFinal:  reverseFechaFinal,
+      },
+    });
+  }
+
+  //la fecha viene en fomrato 2023-5-5 desde el backend y con este metodo se convierte a 5-5-2023
+  reverseStringFecha(fechaString:string){
+    var fechaReverse;
+    var stringArray = fechaString.split("-");
+    var day = stringArray[2];
+    var month = stringArray[1];
+    var year = stringArray[0];
+    fechaReverse = day+'-'+ month +'-'+ year;
+    return fechaReverse
+  }
 
 }
 
 
+//otra clase para mostrar los datos de las vacaciones
+@Component({
+  selector: 'dialog-animations-example-dialog',
+  templateUrl: 'mostrar-solicitud-dialog.html',
+  styleUrls: ['./vacaciones-dash.component.css']
+})
+export class DialogDataDialog {
 
+  //Aqui se arregla la fecha,  ya que JS le quita un dia por alguna razon
+  fechaInicioStringArray = this.data.fechaInicio.split("-");
+  fechaFinalStringArray = this.data.fechaFinal.split("-");
+
+  yearInicio = parseInt(this.fechaInicioStringArray[2]);
+  monthInico= parseInt(this.fechaInicioStringArray[1], 10)-1;
+  diaInicio = parseInt(this.fechaInicioStringArray[0]);
+  fechaInicioFixed = new Date(this.yearInicio, this.monthInico, this.diaInicio)
+
+  yearFinal = parseInt(this.fechaFinalStringArray[2]);
+  monthFinal= parseInt(this.fechaFinalStringArray[1], 10)-1;
+  diaFinal = parseInt(this.fechaFinalStringArray[0]);
+  fechaFinalFixed = new Date(this.yearFinal, this.monthFinal, this.diaFinal)
+
+  selected!: Date | null;
+
+  campaignOne = new FormGroup({
+    start: new FormControl(this.fechaInicioFixed),
+    end: new FormControl(this.fechaFinalFixed),
+  });
+
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Vacacion){}
+}
 

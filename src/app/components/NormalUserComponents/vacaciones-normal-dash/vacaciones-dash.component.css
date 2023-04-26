@@ -35,3 +35,10 @@ tr.rejected { background-color: red }
   width: 100%;
   height: 100%;
 }
+.demo-inline-calendar-card {
+  width: 300px;
+}
+button.example-custom-date-class {
+  background: orange;
+  border-radius: 100%;
+}
