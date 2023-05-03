@@ -29,7 +29,7 @@ export class PrestamosService {
   }
 
   obtenerTodasLasSolicitudesDePrestamosEspera() {
-    return this.httpClient.get(`${baserUSL}/prestamos/`)
+    return this.httpClient.get(`${baserUSL}/prestamos/espera`)
   }
 
   aceptarSolicitudDePrestamos(id: any) {

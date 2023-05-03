@@ -105,6 +105,7 @@
     <tr mat-row *matRowDef="let emprow; columns: displayedColumns;"></tr>
 
   </table>
+  <div class="nc" *ngIf="tableDataSource1.data.length === 0">No hay solicitudes de vacaciones.</div>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">

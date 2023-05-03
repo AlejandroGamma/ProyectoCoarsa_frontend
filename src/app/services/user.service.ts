@@ -39,6 +39,9 @@ export class UserService {
   public obtenerUsuario(userId:any){
     return this.httpClient.get(`${baserUSL}/usuarios/obtener/${userId}`)
   }
+  public obtenerUsuarioUsername(username:any){
+    return this.httpClient.get(`${baserUSL}/usuarios/${username}`)
+  }
 
   public cambiarPasswordAdmin(passForm:any){
     return this.httpClient.put(`${baserUSL}/usuarios/actualizar/`, passForm)

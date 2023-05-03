@@ -47,6 +47,7 @@
         <tr mat-row *matRowDef="let emprow; columns: displayedColumns1;"></tr>
 
       </table>
+      <div class="nc" *ngIf="tableDataSource1.data.length === 0">No hay solicitudes de prestamos en espera.</div>
       <mat-paginator #paginatorEnEspera="matPaginator"  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
     </mat-card>
@@ -98,6 +99,7 @@
         <tr mat-row *matRowDef="let emprow; columns: displayedColumns2;"></tr>
 
       </table>
+      <div class="nc" *ngIf="tableDataSource2.data.length === 0">No hay solicitudes de prestamos en espera.</div>
       <mat-paginator #paginatorHistorial="matPaginator" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </mat-card>
   </div>
