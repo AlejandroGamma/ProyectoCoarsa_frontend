@@ -13,6 +13,7 @@ import {MatSort} from "@angular/material/sort";
 import {ThemePalette} from "@angular/material/core";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Vacacion} from "../../../vacacion";
+import {DialogAdminDataDialog} from "../../AdminComponents/vacaciones-admin-dash/vacaciones-admin-dash.component";
 
 
 @Component({
@@ -185,15 +186,24 @@ export class VacacionesDashComponent implements  OnInit{
 
   }
 
-  openDialog(vacacion:Vacacion) {
-    var reverseFechaInicio = this.reverseStringFecha(vacacion.fechaInicio);
-    var reverseFechaFinal = this.reverseStringFecha(vacacion.fechaFinal);
-    this.dialog.open(DialogDataDialog, {
+  openDialog(solicitud:any) {
+    console.log(solicitud.usuario.email);
+    var reverseFechaInicio = this.reverseStringFecha(solicitud.vacacion.fechaInicio);
+    var reverseFechaFinal = this.reverseStringFecha(solicitud.vacacion.fechaFinal);
+    this.dialog.open(DialogAdminDataDialog, {
       data: {
-        id: vacacion.id,
-        numDias: vacacion.numDias,
+        id: solicitud.vacacion.id,
+        numDias: solicitud.vacacion.numDias,
         fechaInicio: reverseFechaInicio,
         fechaFinal:  reverseFechaFinal,
+        fechaCreacion:  solicitud.fechaCreacion,
+        estado: solicitud.estado,
+        //datos del usuario para mostrar
+        username: solicitud.usuario.username,
+        firstName: solicitud.usuario.firstName,
+        lastName: solicitud.usuario.lastName,
+        email: solicitud.usuario.email,
+
       },
     });
   }
@@ -242,6 +252,6 @@ export class DialogDataDialog {
   });
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Vacacion){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any){}
 }
 

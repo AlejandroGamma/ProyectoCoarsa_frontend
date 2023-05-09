@@ -60,14 +60,14 @@
               <mat-error *ngIf="userRegForm.controls.email.errors?.['required']">Debe de colocar su correo. </mat-error>
               <mat-error *ngIf="userRegForm.controls.email.errors?.['email']">Debe de colocar un correo valido, ejemplo coarsa@coarsa.com. </mat-error>
             </mat-form-field>
-
-            <mat-form-field class="full-width"  appearance = "outline">
-              <mat-label>Telefono</mat-label>
-              <input required formControlName="telefono" name = "telefono" matInput >
-              <mat-error *ngIf="userRegForm.controls.telefono.errors?.['required']">Debe de llenar este campo( 8 caracteres).  </mat-error>
-              <mat-error *ngIf="userRegForm.controls.telefono.errors?.['minlength']">La contraseña debe de contener  minimo 8 caracteres. </mat-error>
-
+            <!--
+                       <mat-form-field class="full-width"  appearance = "outline">
+                         <mat-label>Telefono</mat-label>
+                         <input required formControlName="telefono" name = "telefono" matInput >
+                         <mat-error *ngIf="userRegForm.controls.telefono.errors?.['required']">Debe de llenar este campo( 8 caracteres).  </mat-error>
+                         <mat-error *ngIf="userRegForm.controls.telefono.errors?.['minlength']">La contraseña debe de contener  minimo 8 caracteres. </mat-error>
             </mat-form-field>
+             -->
             <div class="container text-center" >
               <button mat-raised-button type="submit" class="button-registrar" [disabled]="userRegForm.invalid" color="primary">Registrar</button>
 

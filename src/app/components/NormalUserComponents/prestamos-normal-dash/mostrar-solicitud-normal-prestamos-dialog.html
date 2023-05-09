@@ -1,0 +1,39 @@
+
+<mat-dialog-content class="mat-typography">
+  <span mat-dialog-title>Datos de la solicitud </span>
+  <ul>
+    <li>
+      <strong>Monto de prestamo solicitado: ₡</strong> {{data.monto}}
+    </li>
+
+    <li>
+      <strong>ID de la solicitud: #</strong> {{data.id}}
+    </li>
+
+    <li>
+      <strong>Fecha de creación de la solicitud:</strong> {{data.fechaCreacion}}
+    </li>
+    <li>
+      <strong>Estado de la solicitud:</strong> {{data.estado}}
+    </li>
+  </ul>
+  <span mat-dialog-title>Datos del usuario solicitante </span>
+
+  <ul>
+    <li>
+      <strong>Nombre de usuario:</strong>  {{data.username}}
+    </li>
+    <li>
+      <strong>Nombre:</strong> {{data.firstName}} {{data.lastName}}
+    </li>
+    <li>
+      <strong>Correo electronico:</strong> {{data.email}}
+    </li>
+  </ul>
+
+</mat-dialog-content>
+<div mat-dialog-actions>
+
+  <button mat-button mat-dialog-close="" cdkFocusInitial>Cerrar</button>
+
+</div>

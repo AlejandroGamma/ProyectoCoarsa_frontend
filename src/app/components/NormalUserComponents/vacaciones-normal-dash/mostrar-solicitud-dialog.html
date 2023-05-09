@@ -1,5 +1,5 @@
-<span mat-dialog-title>Datos de solicitud </span>
 <mat-dialog-content class="mat-typography">
+  <span mat-dialog-title>Datos de solicitud </span>
   <ul>
     <li>
       <strong>Cantidad de días solicitados:</strong>  {{data.numDias}}
@@ -10,9 +10,29 @@
     <li>
       <strong>Fecha de regreso de las vacaciones:</strong> {{data.fechaFinal}}
     </li>
+    <li>
+      <strong>Fecha de creación de la solicitud:</strong> {{data.fechaCreacion}}
+    </li>
+    <li>
+      <strong>Estado de la solicitud:</strong> {{data.estado}}
+    </li>
+  </ul>
+  <span mat-dialog-title>Datos del usuario solicitante </span>
+
+  <ul>
+    <li>
+      <strong>Nombre de usuario:</strong>  {{data.username}}
+    </li>
+    <li>
+      <strong>Nombre:</strong> {{data.firstName}} {{data.lastName}}
+    </li>
+    <li>
+      <strong>Correo electronico:</strong> {{data.email}}
+    </li>
+
   </ul>
 
-  <strong mat-dialog-title>Ver en el calendario. (solamente para esta solicitud) </strong>
+  <span  >Ver en el calendario. (solamente para esta solicitud) </span>
 
   <mat-form-field class="demo-inline-calendar-card" appearance="fill">
 
@@ -30,8 +50,6 @@
 </mat-dialog-content>
 <div mat-dialog-actions>
 
-  <button mat-button mat-dialog-close cdkFocusInitial>Cerrar</button>
-
-
+  <button mat-button mat-dialog-close="" cdkFocusInitial>Cerrar</button>
 
 </div>

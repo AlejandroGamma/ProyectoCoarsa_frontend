@@ -15,6 +15,7 @@
     <form (ngSubmit)="formSubmit()" [formGroup]="userFormGroup"  >
 
       <mat-form-field  appearance="fill">
+
         <mat-label>Nombre</mat-label>
         <input matInput  id="nombre" formControlName="firstName" name="nombre" [(ngModel)] = "user.firstName">
         <mat-error *ngIf="userFormGroup.controls.firstName.errors?.['required']">Debe de colocar su nombre ( minimo 3 caracteres). </mat-error>

@@ -10,22 +10,31 @@
       </mat-card-header>
       <br><br>
       <mat-card-content>
-        <p><Strong>Nombre: </Strong>{{user.firstName}} {{user.apellido}}
-          <img src="../../../assets/coarsa.png" width="340" height="200" align="right"></p>
+        <p><Strong>Nombre: </Strong>{{user.firstName}}
+          <img src="../../../assets/coarsa.png" width="340" height="200" align="right" alt=""></p>
         <p><Strong>Apellido: </Strong>{{user.lastName}}</p>
         <p><Strong>Nombre de usuario: </Strong>{{user.username}}</p>
-        <p><Strong>email: </Strong>{{user.email}}</p>
-        <p><Strong>Rol: </Strong>{{user.authorities[0].authority}}</p>
-        <p><Strong>Estado: </Strong>{{user.enable ? "No activo" : "Activo"}}</p>
+        <p><Strong>Email: </Strong>{{user.email}}</p>
+        <!--
+       <p><Strong>Días de vacaciones disponibles: </Strong>{{user.cantDiasVacaciones}}</p>
+       <p><Strong>Días de vacaciones solicitados (en espera): </Strong>{{user.diasSolicitados}}</p>
+       -->
+       <p><Strong>Rol: </Strong>{{user.authorities[0].authority}}</p>
+       <p><Strong>Estado: </Strong>{{user.enable ? "No activo" : "Activo"}}</p>
 
-      </mat-card-content>
+       <div class="button-actualizar">
+         <button mat-raised-button  color="primary" (click)="cambiarPassword(user.username)">Cambiar contraseña</button>
 
-    </mat-card>
+       </div>
 
-    <!--<mat-card class="mat-table-wrapper-tables">
+     </mat-card-content>
 
-    </mat-card>
-    -->
+   </mat-card>
+
+   <!--<mat-card class="mat-table-wrapper-tables">
+
+   </mat-card>
+   -->
 
   </div>
 

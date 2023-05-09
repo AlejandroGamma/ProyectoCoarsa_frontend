@@ -13,6 +13,7 @@
         <mat-label>Monto</mat-label>
         <input matInput formControlName="firstCtrl" type="number" min="0" max="500000" [(ngModel)]="prestamo.monto" placeholder="monto"
                required>
+        <mat-hint>Monto maximo: ₡ 500,000</mat-hint>
       </mat-form-field>
       <div>
         <button mat-raised-button class="mat-raised-button-vacaciones" matStepperNext (click)="onClick()" >Siguiente</button>
@@ -24,7 +25,7 @@
       <ng-template matStepLabel>Verificar datos</ng-template>
 
       <br><br>
-      <mat-label><strong> Monto: </strong> </mat-label> <mat-label>{{prestamo.monto}}</mat-label>
+      <mat-label><strong> Monto: ₡ </strong> </mat-label> <mat-label>{{prestamo.monto}}</mat-label>
       <br><br>
       <div>
         <button mat-raised-button class="mat-raised-button-vacaciones" matStepperPrevious >Atras</button>
@@ -37,6 +38,7 @@
     <p>Enviar solicitud de prestamo para ser aprobada.</p>
     <div>
       <button mat-raised-button matStepperNext class="mat-raised-button-vacaciones" (click)="sendClick()"  (click)="stepper.reset()">Enviar solicitud</button>
+      <button mat-raised-button class="mat-raised-button-vacaciones" (click)="stepper.reset()">Cancelar</button>
       <button mat-raised-button class="mat-raised-button-vacaciones" (click)="stepper.reset()">Crear otra solicitud</button>
     </div>
   </mat-step>
@@ -50,7 +52,7 @@
 <mat-card class="mat-card-wrapper-tables">
   <table mat-table  [dataSource]="tableDataSource1" matSort>
     <ng-container matColumnDef="Id">
-      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <th mat-header-cell *matHeaderCellDef>  # Solicitud </th>
       <td mat-cell *matCellDef="let soli"> {{soli.id}} </td>
     </ng-container>
     <ng-container matColumnDef="FechaCreacion">
@@ -70,11 +72,11 @@
     </ng-container>
     <ng-container matColumnDef="Solicitud">
       <th mat-header-cell *matHeaderCellDef> Solicitud </th>
-      <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="primary"  (click)="onClickVerSolicitud(soli.prestamo)">Ver</button> </td>
+      <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="primary"  (click)="openDialog(soli)">Ver</button> </td>
 
     </ng-container>
     <th mat-header-cell *matHeaderCellDef> Solicitud </th>
-    <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="primary"  (click)="onClickVerSolicitud(soli.prestamo)">Ver</button> </td>
+    <td mat-cell *matCellDef="let soli">  <button mat-raised-button color="primary"  (click)="openDialog(soli)">Ver</button> </td>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 

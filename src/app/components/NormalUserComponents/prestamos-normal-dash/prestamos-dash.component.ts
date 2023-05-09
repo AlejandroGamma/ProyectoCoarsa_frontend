@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {PrestamosService} from "../../../services/prestamos.service";
 import {LoginService} from "../../../services/login.service";
 import Swal from "sweetalert2";
@@ -8,6 +8,10 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort"
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {
+  DialogAdminDataDialogPrestamos
+} from "../../AdminComponents/prestamos-admin-dash/prestamos-admin-dash.component";
 
 @Component({
   selector: 'app-prestamos-dash',
@@ -34,7 +38,7 @@ export class PrestamosDashComponent implements  OnInit{
 
 
 
-  constructor(private _formBuilder: FormBuilder, private prestamoService:PrestamosService, private snack:MatSnackBar, private loginService:LoginService) {
+  constructor(private _formBuilder: FormBuilder, private prestamoService:PrestamosService, private snack:MatSnackBar, private loginService:LoginService, private dialog: MatDialog) {
 
   }
 
@@ -117,10 +121,38 @@ export class PrestamosDashComponent implements  OnInit{
     })
 
   }
+  openDialog(solicitud:any) {
+    console.log(solicitud.usuario.email);
 
+    this.dialog.open(DialogNormalDataDialogPrestamos, {
+      data: {
+
+        id: solicitud.id,
+        monto : solicitud.prestamo.monto,
+        fechaCreacion:  solicitud.fechaCreacion,
+        estado: solicitud.estado,
+        //datos del usuario para mostrar
+        username: solicitud.usuario.username,
+        firstName: solicitud.usuario.firstName,
+        lastName: solicitud.usuario.lastName,
+        email: solicitud.usuario.email,
+
+      },
+    });
+  }
 
 }
+//otra clase para mostrar los datos de los prestamos
+@Component({
+  selector: 'mostrar-solicitud-normal-prestamos-dialog',
+  templateUrl: 'mostrar-solicitud-normal-prestamos-dialog.html',
+  styleUrls: ['./prestamos-dash.component.css']
+})
+export class DialogNormalDataDialogPrestamos {
 
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any){}
+}
 
 
 

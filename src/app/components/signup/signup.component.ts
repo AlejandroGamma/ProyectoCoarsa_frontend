@@ -39,7 +39,7 @@ export class SignupComponent implements  OnInit {
     firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
     lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
     email: ['', [Validators.required, Validators.email, Validators.minLength(3)]],
-    telefono: ['', [Validators.required, Validators.minLength(8)]],
+    //telefono: ['', [Validators.required, Validators.minLength(8)]],
 
     usuarioRoles: []
 
@@ -63,7 +63,7 @@ export class SignupComponent implements  OnInit {
             this.user.email = this.userRegForm.value.email!;
             this.user.password = this.userRegForm.value.password!;
             this.user.confirmPassword = this.userRegForm.value.confirmPassword!;
-            this.user.telefono = this.userRegForm.value.telefono!;
+    //        this.user.telefono = this.userRegForm.value.telefono!;
              //this.user.role = this.role;
       console.log(this.user);
       this.userService.addUsuario(this.user).subscribe(

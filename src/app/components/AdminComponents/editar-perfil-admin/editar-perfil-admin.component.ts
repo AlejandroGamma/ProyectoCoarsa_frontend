@@ -30,7 +30,7 @@ export class EditarPerfilAdminComponent implements OnInit{
   //este otro objeto solamente envia estos atrributos y no devuelve un user con authorities y otros atributos que cuesta
   //serializar
   public userEnviar = {
-    //  id: '',
+    actualUsername: '',
     username : '',
     //password : '',
     firstName : '',
@@ -46,7 +46,14 @@ export class EditarPerfilAdminComponent implements OnInit{
     newPassword: '',
     confirmPassword : ''
   }
+
+  //id que se recibe desde el otro componente
   id!:number;
+
+
+  //username del actual usuario sin actualizar, se envia al backend para encontrar el username y actualizarlo por le nuevo
+  usernameSinActualizar!:string;
+
 
   test!:string;
   //este atributo es para el form field desplegable, se instancia en ngonit con role actual del usuario
@@ -56,6 +63,7 @@ export class EditarPerfilAdminComponent implements OnInit{
   roles! : Role [];
 
   newPassword = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]);
+
     userFormGroup = new FormGroup({
 
       email : new FormControl('', [Validators.required, Validators.email]),
@@ -72,9 +80,11 @@ export class EditarPerfilAdminComponent implements OnInit{
 
   ngOnInit(){
     this.id = this.route.snapshot.params['id'];
+    console.log(this.id)
     this.userService.obtenerUsuario(this.id).subscribe(
       (data:any)=>{
         this.user = data;
+        this.usernameSinActualizar = this.user.username;
         console.log("daatos" + this.user.role)
          this.selected= this.user.role.name;
         //this.user.authorities = data
@@ -97,7 +107,7 @@ export class EditarPerfilAdminComponent implements OnInit{
 
       this.user.role.name = value;
     this.test = value;
-    console.log(this.test );
+
   }
 
   formSubmit(){
@@ -110,6 +120,7 @@ export class EditarPerfilAdminComponent implements OnInit{
       });
       return;
     } else{
+      this.userEnviar.actualUsername = this.usernameSinActualizar;
       this.userEnviar.username = this.user.username;
       this.userEnviar.firstName = this.user.firstName;
       this.userEnviar.lastName = this.user.lastName;

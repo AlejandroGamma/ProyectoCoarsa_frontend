@@ -21,6 +21,9 @@ import {InicioAdminComponent} from "./components/AdminComponents/inicio-admin/in
 import {PrestamosAdminDashComponent} from "./components/AdminComponents/prestamos-admin-dash/prestamos-admin-dash.component";
 import {PrestamosDashComponent} from "./components/NormalUserComponents/prestamos-normal-dash/prestamos-dash.component";
 import {RecuperarPasswordComponent} from "./recuperar-password/recuperar-password.component";
+import {
+  CambiarPasswordNormalComponent
+} from "./components/NormalUserComponents/cambiar-password-normal/cambiar-password-normal.component";
 
 const routes: Routes = [
 
@@ -104,6 +107,10 @@ const routes: Routes = [
       {
         path: 'inicio',
         component: InicioNormalComponent
+      },
+      {
+        path: 'cambiar-password/:username',
+        component: CambiarPasswordNormalComponent
       }
     ]
   },

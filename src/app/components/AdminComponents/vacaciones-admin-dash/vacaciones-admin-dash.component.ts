@@ -9,7 +9,6 @@ import {Solicitud} from "../../../solicitud";
 import {FormControl, FormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {Vacacion} from "../../../vacacion";
-import {DialogDataDialog} from "../../NormalUserComponents/vacaciones-normal-dash/vacaciones-dash.component";
 
 @Component({
   selector: 'app-vacaciones-admin-dash',
@@ -68,6 +67,7 @@ export class VacacionesAdminDashComponent implements  OnInit{
       return solicitud.usuario.firstName.toLowerCase().includes(filter) ||  solicitud.usuario.lastName.toLowerCase().includes(filter) || solicitud.estado.toLowerCase().includes(filter)
         || solicitud.fechaCreacion.toLowerCase().includes(filter) || strId.includes(filter) ||  nameSecondName.toLowerCase().includes(filter);
     };
+
   }
 
 
@@ -184,7 +184,7 @@ export class VacacionesAdminDashComponent implements  OnInit{
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si,rechazar!'
+      confirmButtonText: 'Si, Rechazar!'
     }).then((result) => {
       if (result.isConfirmed) {
         this.vacacionesService.rechazarSolicitudDeVacaciones(id).subscribe(
@@ -196,15 +196,6 @@ export class VacacionesAdminDashComponent implements  OnInit{
 
               }
             )
-            this.vacacionesService.obtenerTodasLasSolicitudes().subscribe(
-              (data:any) =>{
-
-               // this.solicitudesVacaciones = data;
-                this.tableDataSource2 = data;
-
-                //console.log(this.solicitudesVacaciones);
-              }
-            )
 
             console.log(data);
             Swal.fire(
@@ -212,6 +203,8 @@ export class VacacionesAdminDashComponent implements  OnInit{
               'La solicitud ha sido Rechazada.',
               'success'
             )
+            this.obtenerLasSolicitudesDeVacacionEspera();
+            this.obtenerTodasLasSolicitudesDeVacaciones();
           }
         )
 
@@ -221,15 +214,24 @@ export class VacacionesAdminDashComponent implements  OnInit{
 
   }
 
-  openDialog(vacacion:Vacacion) {
-    var reverseFechaInicio = this.reverseStringFecha(vacacion.fechaInicio);
-    var reverseFechaFinal = this.reverseStringFecha(vacacion.fechaFinal);
-    this.dialog.open(DialogDataDialog, {
+  openDialog(solicitud:any) {
+    console.log(solicitud.usuario.email);
+    var reverseFechaInicio = this.reverseStringFecha(solicitud.vacacion.fechaInicio);
+    var reverseFechaFinal = this.reverseStringFecha(solicitud.vacacion.fechaFinal);
+    this.dialog.open(DialogAdminDataDialog, {
       data: {
-        id: vacacion.id,
-        numDias: vacacion.numDias,
+        id: solicitud.vacacion.id,
+        numDias: solicitud.vacacion.numDias,
         fechaInicio: reverseFechaInicio,
         fechaFinal:  reverseFechaFinal,
+        fechaCreacion:  solicitud.fechaCreacion,
+        estado: solicitud.estado,
+        //datos del usuario para mostrar
+         username: solicitud.usuario.username,
+        firstName: solicitud.usuario.firstName,
+        lastName: solicitud.usuario.lastName,
+        email: solicitud.usuario.email,
+
       },
     });
   }
@@ -248,7 +250,7 @@ export class VacacionesAdminDashComponent implements  OnInit{
 }
 //otra clase para mostrar los datos de las vacaciones
 @Component({
-  selector: 'dialog-animations-example-dialog',
+  selector: 'mostrar-solicitud-admin-dialog',
   templateUrl: 'mostrar-solicitud-admin-dialog.html',
   styleUrls: ['./vacaciones-admin-dash.component.css']
 })
@@ -269,12 +271,12 @@ export class DialogAdminDataDialog {
   fechaFinalFixed = new Date(this.yearFinal, this.monthFinal, this.diaFinal)
 
   selected!: Date | null;
-
+//esto es parte del calendario
   campaignOne = new FormGroup({
     start: new FormControl(this.fechaInicioFixed),
     end: new FormControl(this.fechaFinalFixed),
   });
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Vacacion){}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any){}
 }

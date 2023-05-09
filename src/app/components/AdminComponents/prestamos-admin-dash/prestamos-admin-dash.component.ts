@@ -1,10 +1,13 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {PrestamosService} from "../../../services/prestamos.service";
 import {LoginService} from "../../../services/login.service";
 import Swal from "sweetalert2";
+import {FormControl, FormGroup} from "@angular/forms";
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {DialogAdminDataDialog} from "../vacaciones-admin-dash/vacaciones-admin-dash.component";
 
 @Component({
   selector: 'app-prestamos-admin-dash',
@@ -31,7 +34,7 @@ export class PrestamosAdminDashComponent implements OnInit{
 
 
 
-constructor( private  prestamosService: PrestamosService, private login:LoginService) {
+constructor( private  prestamosService: PrestamosService, private login:LoginService, private dialog: MatDialog) {
 }
 
 //este metodo es implentado de la clse Oninit y apenas carga la pagina llama estos metodos.
@@ -56,7 +59,7 @@ constructor( private  prestamosService: PrestamosService, private login:LoginSer
         this.tableDataSource2.data = data;
         this.tableDataSource2.paginator = this.paginatorHistorial;
         this.tableDataSource2.sort = this.matSort2;
-        console.log(this.tableDataSource2.data);
+        console.log('xx'+data);
       }
     )
   }
@@ -107,15 +110,7 @@ constructor( private  prestamosService: PrestamosService, private login:LoginSer
 
               }
             )
-            this.prestamosService.obtenerTodasLasSolicitudes().subscribe(
-              (data:any) =>{
 
-                // this.solicitudesVacaciones = data;
-                this.tableDataSource2 = data;
-
-                //console.log(this.solicitudesVacaciones);
-              }
-            )
 
             console.log(data);
             Swal.fire(
@@ -123,6 +118,8 @@ constructor( private  prestamosService: PrestamosService, private login:LoginSer
               'La solicitud ha sido Rechazada.',
               'success'
             )
+            this.obtenerTodasLasSolicitudesDePrestamos();
+            this.obtenerLasSolicitudesDePrestamosEspera();
           }
         )
 
@@ -173,6 +170,7 @@ constructor( private  prestamosService: PrestamosService, private login:LoginSer
               'success'
             )
             this.obtenerTodasLasSolicitudesDePrestamos();
+            this.obtenerLasSolicitudesDePrestamosEspera();
 
           }
         )
@@ -180,8 +178,37 @@ constructor( private  prestamosService: PrestamosService, private login:LoginSer
 
       }
     })
-
-
-
   }
+
+  openDialog(solicitud:any) {
+    console.log(solicitud.usuario.email);
+
+    this.dialog.open(DialogAdminDataDialogPrestamos, {
+      data: {
+
+        id: solicitud.id,
+        monto : solicitud.prestamo.monto,
+        fechaCreacion:  solicitud.fechaCreacion,
+        estado: solicitud.estado,
+        //datos del usuario para mostrar
+        username: solicitud.usuario.username,
+        firstName: solicitud.usuario.firstName,
+        lastName: solicitud.usuario.lastName,
+        email: solicitud.usuario.email,
+
+      },
+    });
+  }
+
+}
+//otra clase para mostrar los datos de los prestamos
+@Component({
+  selector: 'mostrar-solicitud-admin-prestamos-dialog',
+  templateUrl: 'mostrar-solicitud-admin-prestamos-dialog.html',
+  styleUrls: ['./prestamos-admin-dash.component.css']
+})
+export class DialogAdminDataDialogPrestamos {
+
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any){}
 }
