@@ -75,7 +75,7 @@ export class PrestamosDashComponent implements  OnInit{
   //este metodo calcula la fecha de regreso desde el backend
   onClick(){
     //this.prestamo.monto
-    console.log(this.prestamo)
+
   }
 
   //envia el prestamo  y la guarda en el backend
@@ -122,7 +122,7 @@ export class PrestamosDashComponent implements  OnInit{
 
   }
   openDialog(solicitud:any) {
-    console.log(solicitud.usuario.email);
+
 
     this.dialog.open(DialogNormalDataDialogPrestamos, {
       data: {

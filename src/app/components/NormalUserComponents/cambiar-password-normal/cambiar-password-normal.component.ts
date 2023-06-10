@@ -41,7 +41,6 @@ export class CambiarPasswordNormalComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.route.snapshot.params['username'];
-    console.log(this.username)
 
 
     }
@@ -56,21 +55,25 @@ export class CambiarPasswordNormalComponent implements OnInit {
       this.userService.cambiarPasswordUser(this.changePassword).subscribe(
         (data: any) => {
           swal.fire(
+
             '¡Contraseña Actualizada!',
             'La contraseña se ha actualizado con exito',
             'success'
           )
+          this.router.navigate(['/user-dashboard/perfil'])
         }, error => {
           this._snackBar.open(error.error.message, 'Aceptar', {
+            duration: 3000,
             verticalPosition: 'top',
             horizontalPosition: 'right',
             //esta clase esta en styles.css
             panelClass: ['error-snackbar'],
 
+
           })
         }
       )
-      console.log(this.username)
+
 
     }
   }
