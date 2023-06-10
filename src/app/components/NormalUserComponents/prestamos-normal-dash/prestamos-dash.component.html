@@ -11,9 +11,9 @@
       <ng-template matStepLabel >Digitar el monto a solicitar</ng-template>
       <mat-form-field appearance="fill">
         <mat-label>Monto</mat-label>
-        <input matInput formControlName="firstCtrl" type="number" min="0" max="500000" [(ngModel)]="prestamo.monto" placeholder="monto"
+        <input matInput formControlName="firstCtrl" type="number" min="0" max="100000" [(ngModel)]="prestamo.monto" placeholder="monto"
                required>
-        <mat-hint>Monto maximo: ₡ 500,000</mat-hint>
+        <mat-hint>Monto maximo: ₡ 100,000</mat-hint>
       </mat-form-field>
       <div>
         <button mat-raised-button class="mat-raised-button-vacaciones" matStepperNext (click)="onClick()" >Siguiente</button>
