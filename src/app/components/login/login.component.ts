@@ -30,21 +30,21 @@ constructor(private snack:MatSnackBar, private   loginService:LoginService,priva
 formSubmit(){
 
   if (this.loginData.username.trim() == '' || this.loginData.username.trim() == null){
-    this.snack.open('El nombre de usuario es requerido', "Aceptar", {
+    this.snack.open('El nombre de usuario es requerido.', "Aceptar", {
       duration: 3000
     })
     return;
   }
 
   if (this.loginData.password.trim() == '' || this.loginData.password.trim() == null){
-    this.snack.open('La contrrasenna es requerida', 'Aceptar', {
+    this.snack.open('La contrraseña es requerida.', 'Aceptar', {
       duration: 3000
     })
   }
     this.loginService.generateToken(this.loginData).subscribe(
       (data:any) => {
-        console.log(data);
-        console.log(this.loginData);
+
+
         this.loginService.loginUser(data.token);
         this.loginService.getCurrentUser().subscribe((user:any) => {
           this.loginService.setUser(user);
@@ -69,7 +69,7 @@ formSubmit(){
       },(error)=>{
         console.log(error);
         if (error.status === 401){
-          this.snack.open('ERROR! El usuario no existe o está suspendido', 'Aceptar', {
+          this.snack.open('ERROR! El usuario no existe o está suspendido.', 'Aceptar', {
             verticalPosition: 'top',
             horizontalPosition: 'right',
             duration: 3000,
