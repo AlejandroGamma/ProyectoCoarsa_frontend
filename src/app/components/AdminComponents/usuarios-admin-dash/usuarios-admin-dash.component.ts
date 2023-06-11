@@ -49,7 +49,7 @@ export class UsuariosAdminDashComponent implements OnInit{
           (data:any)=>{
             this.obtenerTodosLosUsuarios();
             Swal.fire(
-              'Activado!',
+              'Habilitado!',
               'El usuario ha sido habilitado.',
               'success'
             )
@@ -79,7 +79,7 @@ export class UsuariosAdminDashComponent implements OnInit{
           (data:any)=>{
             this.obtenerTodosLosUsuarios();
             Swal.fire(
-              'Activado!',
+              'Deshabilitado!',
               'El usuario ha sido deshabilitado.',
               'success'
             )
