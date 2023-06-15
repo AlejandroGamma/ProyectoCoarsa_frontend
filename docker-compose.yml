@@ -7,7 +7,7 @@ services:
       #  context: ./
       dockerfile: Dockerfile
     restart: always
-    environment:
+
 
     ports:
       - "4200:80"
