@@ -1,0 +1,14 @@
+version: '1.0'
+
+services:
+  backend:
+    # container_name: Sistema-INFORH
+    build:
+      #  context: ./
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+
+    ports:
+      - "4200:80"
+
