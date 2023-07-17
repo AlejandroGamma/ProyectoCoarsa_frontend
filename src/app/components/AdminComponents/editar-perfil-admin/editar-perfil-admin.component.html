@@ -34,16 +34,16 @@
       <mat-form-field appearance="fill">
         <mat-label>Correo</mat-label>
         <input  [(ngModel)]= "user.email"  formControlName="email"  name = "email" type="email" matInput  >
-        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['required']">Debe de colocar una correo valido. </mat-error>
-        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['email']">Formato de correo no valio, ejemplo coarsa@coarsa.com. </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.email.errors?.['required']">Debe de colocar una correo valido. </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.email.errors?.['email']">Formato de correo no valio, ejemplo coarsa@coarsa.com. </mat-error>
 
 
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Username</mat-label>
         <input  [(ngModel)]= "user.username" formControlName="username"  name = "username" type="username" matInput  >
-        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['required']">Debe de colocar el nombre de usuario ( minimo 3 caracteres). </mat-error>
-        <mat-error *ngIf="userFormGroup.controls.lastName.errors?.['minlength']">Debe de colocar el nombre de usuario ( minimo 3 caracteres). </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.username.errors?.['required']">Debe de colocar el nombre de usuario ( minimo 3 caracteres). </mat-error>
+        <mat-error *ngIf="userFormGroup.controls.username.errors?.['minlength']">Debe de colocar el nombre de usuario ( minimo 3 caracteres). </mat-error>
 
       </mat-form-field>
 

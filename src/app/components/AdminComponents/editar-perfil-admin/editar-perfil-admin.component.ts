@@ -14,7 +14,7 @@ import {IUser} from "../../../IUser";
 })
 export class EditarPerfilAdminComponent implements OnInit{
 
-
+  //este un atributo tipo Iuser
   public user: IUser = {
     username: '',
     password: '',
@@ -27,7 +27,7 @@ export class EditarPerfilAdminComponent implements OnInit{
     estado: true
   }
 
-  //este otro objeto solamente envia estos atrributos y no devuelve un user con authorities y otros atributos que cuesta
+  //este otro objeto solamente envia estos atributos y no devuelve un user con authorities y otros atributos que cuesta
   //serializar
   public userEnviar = {
     actualUsername: '',
@@ -62,6 +62,8 @@ export class EditarPerfilAdminComponent implements OnInit{
   //solamente roles que vienen desde el backend, instanciado en ngonit
   roles! : Role [];
 
+  //este formcontrol es utilizado para comprobar y recibir los datos, no confundir con el ngModel del html, ya que este muestra los datos
+  //que estan en la bd
   newPassword = new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]);
 
     userFormGroup = new FormGroup({
@@ -110,6 +112,7 @@ export class EditarPerfilAdminComponent implements OnInit{
 
   }
 
+  //con este metodo envia los datos actualizados al backend
   formSubmit(){
     console.log(this.userFormGroup);
     if (this.userFormGroup.invalid) {
@@ -126,8 +129,7 @@ export class EditarPerfilAdminComponent implements OnInit{
       this.userEnviar.lastName = this.user.lastName;
       this.userEnviar.email = this.user.email;
       this.userEnviar.role.name = this.user.role.name;
-      console.log(  this.user );
-      console.log(  this.userEnviar );
+
       this.userService.actulizarUsuario(this.userEnviar).subscribe(
 
         (data:any) => {
@@ -139,7 +141,16 @@ export class EditarPerfilAdminComponent implements OnInit{
           this.router.navigate(["/admin/usuarios"]);
 
 
-        },error => console.log(error));
+        },error =>
+          this._snackBar.open(error.error.message, 'Aceptar', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            //esta clase esta en styles.css
+            panelClass: ['error-snackbar'],
+
+          }))
+
     }
 
   }
@@ -156,7 +167,7 @@ export class EditarPerfilAdminComponent implements OnInit{
     } else{
 
       this.ChangePassword.id = this.id.toString();
-      console.log("xx" + this.ChangePassword.id)
+
       this.userService.cambiarPasswordAdmin(this.ChangePassword).subscribe(
         (data: any) => {
           swal.fire(
@@ -180,7 +191,7 @@ export class EditarPerfilAdminComponent implements OnInit{
 
 
 
-
+//Este metodo es una opcion diferente al formgroup, este muestra estos errores en el html
   getErrorMessagePasswordForm() {
 
     if (this.newPassword.hasError('required')) {
