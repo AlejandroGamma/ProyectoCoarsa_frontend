@@ -16,31 +16,32 @@
             <mat-form-field class="full-width"  appearance = "outline">
               <mat-label>Nombre de usuario</mat-label>
               <input required formControlName="username" type="text" matInput >
-              <mat-hint>El nombre de usuario debe ser único</mat-hint>
-              <mat-error *ngIf="userRegForm.controls.username.errors?.['required']">El nombre de usuario debe ser único ( minimo 3 caracteres).  </mat-error>
-              <mat-error *ngIf="userRegForm.controls.username.errors?.['minlength']">El nombre de usuario debe de contener minimo 3 caracteres. </mat-error>
-              <mat-error *ngIf="userRegForm.controls.username.errors?.['maxlength']">El nombre de usuario debe de contener maximo 15 caracteres. </mat-error>
+
+              <mat-error *ngIf="userRegForm.controls.username.errors?.['required']">El nombre de usuario  debe ser su número de cedúla (mínimo 9).  </mat-error>
+              <mat-error *ngIf="userRegForm.controls.username.errors?.['pattern']">El nombre de usuario debe de contener solamente números(mínimo 9).  </mat-error>
+
+              <mat-hint>El nombre de usuario  debe ser su número de cedúla. </mat-hint>
             </mat-form-field>
 
             <mat-form-field class="full-width"  appearance = "outline">
               <mat-label>Contraseña</mat-label>
               <input    formControlName="password" type="password" name = "password" type = "password" matInput placeholder="Digite su contraseña">
-              <mat-error *ngIf="userRegForm.controls.password.errors?.['required']">Debe de llenar este campo( minimo 6 caracteres).  </mat-error>
-              <mat-error *ngIf="userRegForm.controls.password.errors?.['minlength']">La contraseña debe de contener  minimo 6 caracteres. </mat-error>
-              <mat-error *ngIf="userRegForm.controls.password.errors?.['maxlength']">La contraseña debe de contener maximo 15 caracteres. </mat-error>
+              <mat-error *ngIf="userRegForm.controls.password.errors?.['required']">Debe de llenar este campo( mínimo 6 caracteres).  </mat-error>
+              <mat-error *ngIf="userRegForm.controls.password.errors?.['minlength']">La contraseña debe de contener  mínimo 6 caracteres. </mat-error>
+              <mat-error *ngIf="userRegForm.controls.password.errors?.['maxlength']">La contraseña debe de contener mínimo 15 caracteres. </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width"  appearance = "outline">
               <mat-label>Confirmar  contraseña</mat-label>
               <input  required formControlName="confirmPassword" type="password" name = "password" type = "password" matInput >
-              <mat-error *ngIf="userRegForm.controls.confirmPassword.errors?.['required']">Debe de llenar este campo( minimo 6 caracteres).  </mat-error>
-              <mat-error *ngIf="userRegForm.controls.confirmPassword.errors?.['minlength']">La contraseña debe de contener  minimo 6 caracteres. </mat-error>
+              <mat-error *ngIf="userRegForm.controls.confirmPassword.errors?.['required']">Debe de llenar este campo( mínimo 6 caracteres).  </mat-error>
+              <mat-error *ngIf="userRegForm.controls.confirmPassword.errors?.['minlength']">La contraseña debe de contener  mínimo 6 caracteres. </mat-error>
               <mat-error *ngIf="userRegForm.controls.confirmPassword.errors?.['maxlength']">La contraseña debe de contener maximo 15 caracteres. </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width"  appearance = "outline">
               <mat-label>Nombre</mat-label>
               <input formControlName="firstName" name = "nombre" matInput >
-              <mat-error *ngIf="userRegForm.controls.firstName.errors?.['required']">Debe de colocar su nombre ( minimo 3 caracteres). </mat-error>
-              <mat-error *ngIf="userRegForm.controls.firstName.errors?.['minlength']">Debe de colocar su nombre ( minimo 3 caracteres). </mat-error>
+              <mat-error *ngIf="userRegForm.controls.firstName.errors?.['required']">Debe de colocar su nombre ( mínimo 3 caracteres). </mat-error>
+              <mat-error *ngIf="userRegForm.controls.firstName.errors?.['minlength']">Debe de colocar su nombre ( mínimo 3 caracteres). </mat-error>
               <mat-error *ngIf="userRegForm.controls.firstName.errors?.['maxlength']">Debe de colocar su nombre ( max 20 caracteres). </mat-error>
               <mat-error *ngIf="userRegForm.controls.firstName.errors?.['pattern']">Caracteres no validos. </mat-error>
             </mat-form-field>
@@ -48,8 +49,8 @@
             <mat-form-field class="full-width"  appearance = "outline">
               <mat-label>Apellido</mat-label>
               <input formControlName="lastName" name = "apellido" matInput >
-              <mat-error *ngIf="userRegForm.controls.lastName.errors?.['required']">Debe de colocar su apellido ( minimo 3 caracteres). </mat-error>
-              <mat-error *ngIf="userRegForm.controls.lastName.errors?.['minlength']">Debe de colocar su apellido ( minimo 3 caracteres). </mat-error>
+              <mat-error *ngIf="userRegForm.controls.lastName.errors?.['required']">Debe de colocar su apellido ( mínimo 3 caracteres). </mat-error>
+              <mat-error *ngIf="userRegForm.controls.lastName.errors?.['minlength']">Debe de colocar su apellido ( mínimo 3 caracteres). </mat-error>
               <mat-error *ngIf="userRegForm.controls.lastName.errors?.['maxlength']">Debe de colocar su apellido ( max 20 caracteres). </mat-error>
               <mat-error *ngIf="userRegForm.controls.lastName.errors?.['pattern']">Caracteres no validos. </mat-error>
             </mat-form-field>

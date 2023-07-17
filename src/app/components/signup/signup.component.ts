@@ -33,7 +33,7 @@ export class SignupComponent implements  OnInit {
 
   //validador del form
   userRegForm = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+    username: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
     password: ['', [Validators.required, Validators.minLength(6)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15),Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$')]],
